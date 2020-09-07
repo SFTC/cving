@@ -1,12 +1,13 @@
 ---
+title: Foo
 nav:
-  title: 组件
   path: /components
+group:
+  path: /
+  order: 2
 ---
 
-## Foo
-
-Demo:
+## 基本使用
 
 ```tsx
 import React from 'react';

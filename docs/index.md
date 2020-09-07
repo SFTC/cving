@@ -1,7 +1,10 @@
 ---
+title: 介绍 - X-CV
+order: 4
+sidebar: false
 hero:
-  title: components
-  desc: components site example
+  title: X-CV
+  desc: 用于提效的业务物料库
   actions:
     - text: Getting Started
       link: /components
