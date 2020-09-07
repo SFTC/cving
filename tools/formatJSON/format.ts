@@ -47,11 +47,25 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
   let type = typeof obj;
   if (IsArray(obj)) {
     if (obj.length == 0) {
-      html += GetRow(indent, "<span class='ArrayBrace'>[ ]</span>" + comma, isPropertyContent);
+      html += GetRow(
+        indent,
+        "<span class='ArrayBrace'>[ ]</span>" + comma,
+        isPropertyContent,
+      );
     } else {
-      html += GetRow(indent, "<span class='ArrayBrace'>[</span>", isPropertyContent);
+      html += GetRow(
+        indent,
+        "<span class='ArrayBrace'>[</span>",
+        isPropertyContent,
+      );
       for (let i = 0; i < obj.length; i++) {
-        html += ProcessObject(obj[i], indent + 1, i < obj.length - 1, true, false);
+        html += ProcessObject(
+          obj[i],
+          indent + 1,
+          i < obj.length - 1,
+          true,
+          false,
+        );
       }
       html += GetRow(indent, "<span class='ArrayBrace'>]</span>" + comma);
     }
@@ -68,14 +82,29 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
         'Date',
       );
     } else if (obj.constructor == _regexpObj.constructor) {
-      html += FormatLiteral('new RegExp(' + obj + ')', '', comma, indent, isArray, 'RegExp');
+      html += FormatLiteral(
+        'new RegExp(' + obj + ')',
+        '',
+        comma,
+        indent,
+        isArray,
+        'RegExp',
+      );
     } else {
       let numProps = 0;
       for (let prop in obj) numProps++;
       if (numProps == 0) {
-        html += GetRow(indent, "<span class='ObjectBrace'>{ }</span>" + comma, isPropertyContent);
+        html += GetRow(
+          indent,
+          "<span class='ObjectBrace'>{ }</span>" + comma,
+          isPropertyContent,
+        );
       } else {
-        html += GetRow(indent, "<span class='ObjectBrace'>{</span>", isPropertyContent);
+        html += GetRow(
+          indent,
+          "<span class='ObjectBrace'>{</span>",
+          isPropertyContent,
+        );
 
         let j = 0;
 
@@ -102,7 +131,14 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
     html += FormatLiteral(obj, '', comma, indent, isArray, 'Boolean');
   } else if (type == 'function') {
     if (obj.constructor == _regexpObj.constructor) {
-      html += FormatLiteral('new RegExp(' + obj + ')', '', comma, indent, isArray, 'RegExp');
+      html += FormatLiteral(
+        'new RegExp(' + obj + ')',
+        '',
+        comma,
+        indent,
+        isArray,
+        'RegExp',
+      );
     } else {
       obj = FormatFunction(indent, obj);
 
@@ -137,7 +173,15 @@ function FormatLiteral(literal, quote, comma, indent, isArray, style) {
       .split('>')
       .join('&gt;');
 
-  let str = "<span class='" + style + "'>" + quote + literal + quote + comma + '</span>';
+  let str =
+    "<span class='" +
+    style +
+    "'>" +
+    quote +
+    literal +
+    quote +
+    comma +
+    '</span>';
 
   if (isArray) str = GetRow(indent, str);
 
@@ -165,7 +209,8 @@ function GetRow(indent, data, isPropertyContent) {
 
   for (let i = 0; i < indent && !isPropertyContent; i++) tabs += window.TAB;
 
-  if (data != null && data.length > 0 && data.charAt(data.length - 1) != '\n') data = data + '\n';
+  if (data != null && data.length > 0 && data.charAt(data.length - 1) != '\n')
+    data = data + '\n';
 
   return tabs + data;
 }
