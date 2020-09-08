@@ -24,7 +24,7 @@ footer: Open-source MIT Licensed | Copyright © 2020-present
 ## 使用
 
 ```bash
-npm install x-cv
+npm install cving
 # or
-yarn add x-cv
+yarn add cving
 ```

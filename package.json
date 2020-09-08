@@ -1,19 +1,18 @@
 {
-  "private": true,
-  "name": "components",
+  "name": "cving",
   "version": "0.0.1",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d dist",
-    "build": "father-build",
+    "build": "father-build && webpack",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
-  "repository": "https://github.com/SFTC/x-cv",
+  "repository": "https://github.com/SFTC/cving",
   "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -56,7 +55,6 @@
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "^1.19.1",
     "terser-webpack-plugin": "^4.1.0",
-    "umi-plugin-githubpages": "^2.0.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "yorkie": "^2.0.0"

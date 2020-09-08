@@ -6,8 +6,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: {
-    'x-cv': './src/index.tsx',
-    'x-cv.min': './src/index.tsx',
+    cving: './src/index.tsx',
+    'cving.min': './src/index.tsx',
   },
   output: {
     filename: '[name].js',
