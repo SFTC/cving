@@ -17,6 +17,5 @@ export default defineConfig({
       path: 'https://github.com/SFTC/x-cv',
     },
   ],
-  plugins: [['umi-plugin-githubpages', {}]],
   // more config: https://d.umijs.org/config
 });
