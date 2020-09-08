@@ -1,9 +1,9 @@
 ---
-title: 介绍 - X-CV
+title: 介绍 - cving
 order: 4
 sidebar: false
 hero:
-  title: X-CV
+  title: cving
   desc: 用于提效的业务物料库
   actions:
     - text: 快速开始 →
