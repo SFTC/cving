@@ -1,5 +1,5 @@
 ---
-title: 工具 - 介绍
+title: 介绍
 nav:
   title: 工具
   path: /tools

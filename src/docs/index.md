@@ -1,5 +1,5 @@
 ---
-title: 组件 - 介绍
+title: 介绍
 nav:
   title: 组件
   path: /components
@@ -7,7 +7,6 @@ nav:
 group:
   path: /
   order: 1
-
 toc: false
 ---
 

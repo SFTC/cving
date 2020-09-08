@@ -1,5 +1,5 @@
 ---
-title: pro-table
+title: table 表格
 nav:
   path: /demos
 group:
@@ -9,4 +9,4 @@ group:
 
 ## 基本使用
 
-<code src="../pro-table/index.tsx" background="#f5f5f5" />
+<code src="../table/index.tsx" background="#f5f5f5" />

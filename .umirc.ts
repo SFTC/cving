@@ -9,7 +9,7 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   resolve: {
-    includes: ['demos', 'src', 'docs', 'tools'],
+    includes: ['src', 'docs', 'tools', 'demos'],
   },
   navs: [
     null, // null 值代表保留约定式生成的导航，只做增量配置
