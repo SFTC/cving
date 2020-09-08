@@ -9,11 +9,18 @@
     "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "declaration": true,
     "paths": {
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"]
-    },
-    "allowSyntheticDefaultImports": true
+    }
   },
   "exclude": [
     "node_modules",
@@ -21,7 +28,16 @@
     "es",
     "dist",
     "typings",
-    "**/__test__",
-    "test"
+    ".eslintrc.js",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "tslint:latest",
+    "tslint-config-prettier",
+    "example",
+    "_test_",
+    "tests"
   ]
 }
