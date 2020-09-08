@@ -19,7 +19,8 @@
     "declaration": true,
     "paths": {
       "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@@/*": ["src/.umi/*"],
+      "cving": ["./src"]
     }
   },
   "exclude": [
