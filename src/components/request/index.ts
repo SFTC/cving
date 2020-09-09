@@ -42,6 +42,12 @@ const errorHandler = (error: { response: Response }) => {
 export interface ExtendOption extends ExtendOptionsInit {
   /** 环境变量，默认为 env */
   env: 'test' | 'dev' | 'pre' | 'mock' | 'build' | false;
+  /** 业务状态码的字段名，默认是 errno | err_no */
+  errno: string;
+  /** 未登录的 errno 值，默认为 30200 */
+  noLoginErrno: number;
+  /** 业务处理成功的 errno 值，默认为 0 */
+  successError: number;
   /** 未登录时跳转到的 url ---> 线上环境 */
   loginUrlOnline: string;
   /** 未登录时跳转到的 url ---> 线下环境 */
@@ -50,12 +56,6 @@ export interface ExtendOption extends ExtendOptionsInit {
   getLoginUrlFromAE: boolean;
   /** 后端返回未登录要跳转 url 的字段名，默认为 login_url */
   loginFieldFromAE: string;
-  /** 业务状态码，默认是 errno | err_no */
-  errno: string;
-  /** 未登录的 errno 值，默认为 30200 */
-  noLoginErrno: number;
-  /** 业务处理成功的 errno 值，默认为 0 */
-  successError: number;
 }
 
 /**
@@ -109,7 +109,7 @@ const packRequest = (extendOption: Partial<ExtendOption>) => {
         let loginUrl = '';
 
         if (options.getLoginUrlFromAE) {
-          loginUrl = res.result[options.loginFieldFromAE];
+          loginUrl = (res.result || res.data)[options.loginFieldFromAE];
         } else {
           loginUrl =
             options.env === 'build'
