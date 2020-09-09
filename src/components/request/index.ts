@@ -1,5 +1,13 @@
-import { extend } from 'umi-request';
+import { extend, ExtendOptionsInit } from 'umi-request';
 import { notification } from 'antd';
+import { isEmpty } from 'better-js-lib';
+
+/** 调用错误提示框 */
+const remindError = (errorDesc: string, errorMsg: string = '接口报错') =>
+  notification.error({
+    message: errorMsg,
+    description: errorDesc,
+  });
 
 /** 错误处理 */
 const errorHandler = (error: { response: Response }) => {
@@ -25,29 +33,108 @@ const errorHandler = (error: { response: Response }) => {
     errorText = codeMessage[response.status] || response.statusText;
   }
 
-  notification.error({
-    message: '接口报错',
-    description: errorText,
-  });
+  remindError(errorText);
 
-  return Promise.reject(new Error('网络异常'));
+  return false;
 };
 
-/** 环境变量 */
-export type Env = 'test' | 'dev' | 'pre' | 'mock' | 'build' | false;
+/** 拓展配置 */
+export interface ExtendOption extends ExtendOptionsInit {
+  /** 环境变量，默认为 env */
+  env: 'test' | 'dev' | 'pre' | 'mock' | 'build' | false;
+  /** 未登录时跳转到的 url ---> 线上环境 */
+  loginUrlOnline: string;
+  /** 未登录时跳转到的 url ---> 线下环境 */
+  loginUrlOther: string;
+  /** 是否从后端获取未登录要跳转的 url */
+  getLoginUrlFromAE: boolean;
+  /** 后端返回未登录要跳转 url 的字段名，默认为 login_url */
+  loginFieldFromAE: string;
+  /** 业务状态码，默认是 errno | err_no */
+  errno: string;
+  /** 未登录的 errno 值，默认为 30200 */
+  noLoginErrno: number;
+  /** 业务处理成功的 errno 值，默认为 0 */
+  successError: number;
+}
 
-const packRequest = (env: Env) => {
+/**
+ * 对外暴露的 umi-request 二次封装方法
+ * @param env 当前运行环境
+ * @param extendOption 自定义 extend 拓展
+ */
+const packRequest = (extendOption: Partial<ExtendOption>) => {
+  /** 配置信息 */
+  const options: ExtendOption = {
+    env: 'dev',
+    loginFieldFromAE: 'login_url',
+    noLoginErrno: 30200,
+    successError: 0,
+    getLoginUrlFromAE: false,
+    loginUrlOnline: '',
+    loginUrlOther: '',
+    errno: 'errno',
+    ...extendOption,
+  };
+
+  /** 对外输出的请求方法 */
   const request = extend({
-    getResponse: true, // 获取源数据
     credentials: 'include', // 默认请求是否带上cookie
     errorHandler,
+    ...extendOption,
   });
 
-  request.interceptors.response.use(response => {
-    if (env === 'build') {
-      return response;
+  request.use(async (ctx, next) => {
+    await next();
+
+    /** 后端返回数据 */
+    const { res } = ctx;
+
+    /** 业务状态码 */
+    const errno = +[res[options.errno], res.error_no].filter(v => isEmpty(v));
+
+    /** 业务错误状态信息 */
+    const errmsg = res.errmsg || res.error_msg || '';
+
+    switch (errno) {
+      /** 业务状态成功 */
+      case options.successError: {
+        ctx.res = res.result || res.data;
+        break;
+      }
+
+      /** 未登录 */
+      case options.noLoginErrno: {
+        /** 去登录的 url */
+        let loginUrl = '';
+
+        if (options.getLoginUrlFromAE) {
+          loginUrl = res.result[options.loginFieldFromAE];
+        } else {
+          loginUrl =
+            options.env === 'build'
+              ? options.loginUrlOnline
+              : options.loginUrlOther;
+        }
+
+        window.location.replace(loginUrl);
+
+        remindError(errmsg);
+
+        ctx.res = false;
+
+        break;
+      }
+
+      /** 其他异常 case */
+      default: {
+        remindError(errmsg);
+
+        ctx.res = false;
+
+        break;
+      }
     }
-    return response;
   });
 
   return request;

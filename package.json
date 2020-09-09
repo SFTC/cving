@@ -40,7 +40,8 @@
   ],
   "dependencies": {
     "@ant-design/pro-table": "^2.6.1",
-    "antd": "^4.6.3"
+    "antd": "^4.6.3",
+    "better-js-lib": "^2.0.8"
   },
   "devDependencies": {
     "@umijs/fabric": "^2.2.2",
