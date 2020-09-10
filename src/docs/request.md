@@ -54,6 +54,13 @@ customRequest
   });
 ```
 
+## 特性
+
+1. 初始化后返回一个 request 实例，可以使用 umi-request 的所有功能
+2. 内部处理状态响应码非 `2xx` 的情况
+3. credentials 配置默认为 `include`，也就是默认请求会带上 cookie
+4. 内部处理业务状态码，包含成功和未登录的情况判断
+
 ## 参数配置
 
 **默认可接受所有 umi-request 的 extend options 参数 [点击查看](https://github.com/umijs/umi-request/blob/master/README_zh-CN.md#request-options-参数)**
@@ -63,7 +70,7 @@ customRequest
 | env               | 环境变量                                | `string`  | `'dev'`             | `string` | `'test'` \| `'dev'` \| `'mock'` \|`'build'` |
 | errno             | 业务状态码的字段名                      | `string`  | `errno` \| `err_no` | --       |
 | noLoginErrno      | 未登录的 errno 值                       | `number`  | `30200`             | --       |
-| successError      | 业务处理成功的 errno 值                 | `number`  | `0`                 | --       |
+| successErrno      | 业务处理成功的 errno 值                 | `number`  | `0`                 | --       |
 | loginUrlOnline    | `env === 'build'`，未登录时跳转到的 url | `string`  | `''`                | --       |
 | loginUrlOther     | `env !== 'build'`，未登录时跳转到的 url | `string`  | `''`                | --       |
 | getLoginUrlFromAE | 是否从后端获取未登录要跳转的 url        | `boolean` | `false`             | --       |
@@ -95,17 +102,17 @@ const customRequest = request({
 
 request 中默认 `errno === 0` 是业务处理成功的条件，使用者可以获取到后端返回的 `data` 或者 `result`，而 `errno` 为其他值时则视为异常 case，使用者获取到的 response 是 `false`，同时 request 默认会使用 antd 的 notification 方法弹出错误提示框。因此使用者也可以通过判断 response 是否为 `false` 来判断业务处理是否成功。
 
-我们也可以通过设置 request 的 `successError` 参数来指定业务处理成功的 `errno` 值，比如：
+我们也可以通过设置 request 的 `successErrno` 参数来指定业务处理成功的 `errno` 值，比如：
 
 ```jsx | pure
 const customRequest = request({
-  successError: 200,
+  successErrno: 200,
 });
 ```
 
 ### env
 
-env 是当前项目的运行环境，比如在用 umi 创建的项目中一般设置为 `REACT_APP_ENV`.
+env 是当前项目的运行环境，比如在用 umi 创建的项目中一般设置为 `REACT_APP_ENV`。
 
 ### 未登录逻辑校验
 
@@ -140,3 +147,47 @@ customRequest('/user');
 
 // 页面会直接跳转到 https://www.xxxx.com
 ```
+
+## 代码示例
+
+这里将会提供一些常用功能的代码示例，方便大家直接拷贝使用。
+
+### GET 请求
+
+<code src="./example/request/get.tsx">
+
+### POST 请求
+
+<code src="./example/request/post.tsx">
+
+### option 配置
+
+<code src="./example/request/option.tsx">
+
+### 响应状态码非 2xx
+
+<code src="./example/request/statusError.tsx">
+
+### 返回非成功的业务状态码
+
+<code src="./example/request/errnoError.tsx">
+
+### 自定义业务状态码字段名
+
+<code src="./example/request/errnoField.tsx">
+
+### 自定义业务处理成功的状态码值
+
+<code src="./example/request/errnoCustomSucc.tsx">
+
+### 未登录
+
+<code src="./example/request/noLgin.tsx">
+
+### 从后端获取登录要跳转的 url
+
+<code src="./example/request/noLoginFromAE.tsx">
+
+### 自定义未登录的 errno 值
+
+<code src="./example/request/noLoginErrnoCustom.tsx">

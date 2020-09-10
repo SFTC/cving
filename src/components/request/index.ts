@@ -47,7 +47,7 @@ export interface ExtendOption extends ExtendOptionsInit {
   /** 未登录的 errno 值，默认为 30200 */
   noLoginErrno: number;
   /** 业务处理成功的 errno 值，默认为 0 */
-  successError: number;
+  successErrno: number;
   /** 未登录时跳转到的 url ---> 线上环境 */
   loginUrlOnline: string;
   /** 未登录时跳转到的 url ---> 线下环境 */
@@ -63,13 +63,13 @@ export interface ExtendOption extends ExtendOptionsInit {
  * @param env 当前运行环境
  * @param extendOption 自定义 extend 拓展
  */
-const packRequest = (extendOption: Partial<ExtendOption>) => {
+const packRequest = (extendOption?: Partial<ExtendOption>) => {
   /** 配置信息 */
   const options: ExtendOption = {
     env: 'dev',
     loginFieldFromAE: 'login_url',
     noLoginErrno: 30200,
-    successError: 0,
+    successErrno: 0,
     getLoginUrlFromAE: false,
     loginUrlOnline: '',
     loginUrlOther: '',
@@ -91,14 +91,14 @@ const packRequest = (extendOption: Partial<ExtendOption>) => {
     const { res } = ctx;
 
     /** 业务状态码 */
-    const errno = +[res[options.errno], res.error_no].filter(v => isEmpty(v));
+    const errno = +[res[options.errno], res.error_no].filter(v => !isEmpty(v));
 
     /** 业务错误状态信息 */
     const errmsg = res.errmsg || res.error_msg || '';
 
     switch (errno) {
       /** 业务状态成功 */
-      case options.successError: {
+      case options.successErrno: {
         ctx.res = res.result || res.data;
         break;
       }
