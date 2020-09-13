@@ -3,7 +3,7 @@ title: 介绍
 nav:
   title: 代码示例
   path: /demos
-  order: 3
+  order: 2
 group:
   path: /
   order: 1

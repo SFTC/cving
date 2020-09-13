@@ -178,20 +178,21 @@ export default () => {
   return (
     <ProTable<GithubIssueItem>
       columns={columns}
-      pagination={{
-        showQuickJumper: true,
-      }}
+      pagination={{}}
       actionRef={actionRef}
       request={async (params = {}) =>
         request<{
           data: GithubIssueItem[];
-        }>('https://proapi.azurewebsites.net/github/issues', {
-          params,
-        })
+        }>(
+          'https://easy-mock.com/mock/5f585176d5906660c22dab65/cving/table-demo-basic',
+          {
+            params,
+          },
+        )
       }
       rowKey="id"
       dateFormatter="string"
-      headerTitle="高级表格"
+      headerTitle="查询表格"
       toolBarRender={() => [
         <Button key="3" type="primary">
           <PlusOutlined />

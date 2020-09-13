@@ -3,7 +3,7 @@ title: 介绍
 nav:
   title: 工具
   path: /tools
-  order: 2
+  order: 3
 group:
   path: /
   order: 1
