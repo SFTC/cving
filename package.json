@@ -39,7 +39,7 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@ant-design/pro-table": "^2.6.1",
+    "@ant-design/pro-table": "^2.7.3",
     "antd": "^4.6.3",
     "better-js-lib": "^2.0.8"
   },
