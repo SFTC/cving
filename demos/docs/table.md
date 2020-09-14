@@ -31,6 +31,12 @@ table 表格示例是在使用 [pro-table](https://procomponents.ant.design/comp
 
 ## 列操作项
 
-在原有 pro-table 基础上修改了一点样式，使得展示更清晰
+在原有 pro-table 基础上修改了一些样式，使得展示更清晰
 
 <code src="../table/columnOpera.tsx" background="#f5f5f5" />
+
+## 表格操作按钮
+
+除了"重置"、"查看"之外的按钮都写在 `toolBarRender` 中
+
+<code src="../table/tableOpera.tsx" background="#f5f5f5" />
