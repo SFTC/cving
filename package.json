@@ -39,11 +39,11 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@ant-design/pro-table": "^2.7.3",
     "antd": "^4.6.3",
     "better-js-lib": "^2.0.8"
   },
   "devDependencies": {
+    "@ant-design/pro-table": "latest",
     "@umijs/fabric": "^2.2.2",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",

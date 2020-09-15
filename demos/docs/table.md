@@ -40,3 +40,48 @@ table 表格示例是在使用 [pro-table](https://procomponents.ant.design/comp
 除了"重置"、"查看"之外的按钮都写在 `toolBarRender` 中
 
 <code src="../table/tableOpera.tsx" background="#f5f5f5" />
+
+## 搜索表单去掉"收起"功能，全部展开
+
+通过设置 `search` 的 `collapsed` 和 `collapseRender` 参数实现
+
+<code src="../table/searchCollapse.tsx" background="#f5f5f5" />
+
+## 横向滚动
+
+通过设置 `scroll.x` 参数实现
+
+<code src="../table/tableScroll.tsx" background="#f5f5f5" />
+
+## 批量操作
+
+通过设置 `rowSelection` 参数实现，antd 可配置参数[点击查看](https://ant-design.gitee.io/components/table-cn/#rowSelection)
+
+pro-table 在 antd 基础上增加了 alert 用来承载一些信息，可以通过 `tableAlertRender` 和 `tableAlertOptionRender` 参数进行自定义设置，示例代码[点击查看](https://procomponents.ant.design/components/table#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C)
+
+<code src="../table/rowSelection.tsx" background="#f5f5f5" />
+
+## 搜索表单布局
+
+1. 改变 `search.labelWidth` 参数可以设置 label 的宽度
+2. 改变 `search.span` 参数可以设置每一行放几个搜索项，支持响应式布局，默认值：
+
+```tsx | pure
+const defaultColConfig = {
+  xs: 24,
+  sm: 24,
+  md: 12,
+  lg: 12,
+  xl: 8,
+  xxl: 6,
+};
+```
+
+<code src="../table/searchFormLayout.tsx" background="#f5f5f5" />
+
+## 有必填的搜索项
+
+1. 改变 `search.labelWidth` 参数可以设置 label 的宽度
+2. 改变 `search.span` 参数可以设置每一行放几个搜索项，支持响应式布局，默认值：
+
+<code src="../table/searchQueryRequired.tsx" background="#f5f5f5" />
