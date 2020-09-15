@@ -55,9 +55,8 @@ table 表格示例是在使用 [pro-table](https://procomponents.ant.design/comp
 
 ## 批量操作
 
-通过设置 `rowSelection` 参数实现，antd 可配置参数[点击查看](https://ant-design.gitee.io/components/table-cn/#rowSelection)
-
-pro-table 在 antd 基础上增加了 alert 用来承载一些信息，可以通过 `tableAlertRender` 和 `tableAlertOptionRender` 参数进行自定义设置，示例代码[点击查看](https://procomponents.ant.design/components/table#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C)
+1. 通过设置 `rowSelection` 参数实现，antd 可配置参数[点击查看](https://ant-design.gitee.io/components/table-cn/#rowSelection)
+   2.pro-table 在 antd 基础上增加了 alert 用来承载一些信息，可以通过 `tableAlertRender` 和 `tableAlertOptionRender` 参数进行自定义设置，示例代码[点击查看](https://procomponents.ant.design/components/table#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C)
 
 <code src="../table/rowSelection.tsx" background="#f5f5f5" />
 
@@ -81,7 +80,18 @@ const defaultColConfig = {
 
 ## 有必填的搜索项
 
-1. 改变 `search.labelWidth` 参数可以设置 label 的宽度
-2. 改变 `search.span` 参数可以设置每一行放几个搜索项，支持响应式布局，默认值：
+1. 对必填的搜索项使用 `TableSearchRequired` 组件包裹
+2. 自定义"查询"、"重置"、"导出"等按钮，增加搜索项必填校验
+3. 可以通过配置 columns 每个 item 的 `order` 属性对搜索项进行排序，权重大的排序靠前
 
 <code src="../table/searchQueryRequired.tsx" background="#f5f5f5" />
+
+## 各种类型的搜索项
+
+包含类型：
+
+1. 普通 text
+2. 单选
+3. 多选
+
+<code src="../table/valueType.tsx" background="#f5f5f5" />
