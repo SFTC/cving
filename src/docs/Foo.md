@@ -17,6 +17,6 @@ import { Foo } from 'cving';
 
 export default () => <Foo title="First Demo" />;
 ``` -->
-<code src="./example/Foo.tsx">
+<code src="./docs/Foo.tsx">
 
 More skills for writing demo: https://d.umijs.org/guide/demo-principle

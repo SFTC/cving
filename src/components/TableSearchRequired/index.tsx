@@ -1,6 +1,8 @@
 import React from 'react';
 import { ProSchemaComponentTypes } from '@ant-design/pro-utils/lib';
-import styles from './index.less';
+import classNames from 'classnames';
+
+import './index.less';
 
 export interface TableSearchRequiredProps {
   /** pro-table 类型 */
@@ -10,7 +12,13 @@ export interface TableSearchRequiredProps {
 }
 
 export default (props: TableSearchRequiredProps) => (
-  <span className={props.type === 'form' ? styles.required : null}>
+  <span
+    className={
+      props.type === 'form'
+        ? classNames('cving-table-search-required')
+        : undefined
+    }
+  >
     {props.title}
   </span>
 );

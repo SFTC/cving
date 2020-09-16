@@ -33,7 +33,9 @@ export default () => {
       headerTitle="查询表格"
       rowKey="id"
       actionRef={actionRef}
-      rowClassName={(_, index) => (index % 2 === 1 ? 'dark-row' : '')}
+      rowClassName={(_, index) =>
+        index % 2 === 1 ? 'cving-table-row-stripe' : ''
+      }
       toolBarRender={() => [
         <Button key="1" type="primary">
           <PlusOutlined /> 新建

@@ -19,10 +19,10 @@ table 表格示例是在使用 [pro-table](https://procomponents.ant.design/comp
 
 ## 条纹样式
 
-奇数的表格项会增加 `dark-row` 这个类名，可以将下面样式代码添加到 `src/global.[css|less]`中，成为全局样式。
+奇数的表格项会增加 `cving-table-row-stripe` 这个类名，可以将下面样式代码添加到 `src/global.[css|less]`中，成为全局样式。
 
 ```css
-.dark-row {
+.cving-table-row-stripe {
   background: #f9f9f9;
 }
 ```
