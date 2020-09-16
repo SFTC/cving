@@ -154,40 +154,40 @@ customRequest('/user');
 
 ### GET 请求
 
-<code src="./docs/request/get.tsx">
+<code src="./demos/request/get.tsx">
 
 ### POST 请求
 
-<code src="./docs/request/post.tsx">
+<code src="./demos/request/post.tsx">
 
 ### option 配置
 
-<code src="./docs/request/option.tsx">
+<code src="./demos/request/option.tsx">
 
 ### 响应状态码非 2xx
 
-<code src="./docs/request/statusError.tsx">
+<code src="./demos/request/statusError.tsx">
 
 ### 返回非成功的业务状态码
 
-<code src="./docs/request/errnoError.tsx">
+<code src="./demos/request/errnoError.tsx">
 
 ### 自定义业务状态码字段名
 
-<code src="./docs/request/errnoField.tsx">
+<code src="./demos/request/errnoField.tsx">
 
 ### 自定义业务处理成功的状态码值
 
-<code src="./docs/request/errnoCustomSucc.tsx">
+<code src="./demos/request/errnoCustomSucc.tsx">
 
 ### 未登录
 
-<code src="./docs/request/noLgin.tsx">
+<code src="./demos/request/noLgin.tsx">
 
 ### 从后端获取登录要跳转的 url
 
-<code src="./docs/request/noLoginFromAE.tsx">
+<code src="./demos/request/noLoginFromAE.tsx">
 
 ### 自定义未登录的 errno 值
 
-<code src="./docs/request/noLoginErrnoCustom.tsx">
+<code src="./demos/request/noLoginErrnoCustom.tsx">
