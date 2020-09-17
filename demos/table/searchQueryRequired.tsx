@@ -64,6 +64,7 @@ export default () => {
 
   return (
     <ProTable<TableListItem, SearchParams>
+      manualRequest
       headerTitle="查询表格"
       rowKey="id"
       actionRef={actionRef}
@@ -101,7 +102,7 @@ export default () => {
         request<{
           data: TableListItem[];
         }>(
-          'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/demo/table/basic',
+          'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/demo/table/simple',
           {
             params,
           },

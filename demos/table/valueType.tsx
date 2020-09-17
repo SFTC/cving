@@ -8,13 +8,22 @@ export interface SearchParams {
   name: string;
   age: number;
   sex: string;
-  class: string[];
+  class: number[];
+  salary: number;
+  birthday: string;
+  record_time: string | number;
+  range_time: string[];
 }
 
 export interface TableListItem {
   name: string;
   age: number;
   sex: string;
+  class: number;
+  salary: number;
+  birthday: string;
+  record_time: string;
+  range_time: string;
 }
 
 /** 性别映射 */
@@ -56,6 +65,26 @@ const columns: ProColumns<TableListItem>[] = [
       mode: 'multiple',
     },
   },
+  {
+    title: '月薪',
+    dataIndex: 'salary',
+    valueType: 'money',
+  },
+  {
+    title: '出生日期',
+    dataIndex: 'birthday',
+    valueType: 'date',
+  },
+  {
+    title: '登记时间',
+    dataIndex: 'record_time',
+    valueType: 'dateTime',
+  },
+  {
+    title: '日期范围',
+    dataIndex: 'range_time',
+    valueType: 'dateRange',
+  },
 ];
 
 export default () => {
@@ -86,10 +115,19 @@ export default () => {
         )
       }
       beforeSearchSubmit={params => {
+        // 这里处理数据
         const processParams = {
           ...params,
           class: params.class?.join(),
+          record_time: params.record_time
+            ? +new Date(params.record_time)
+            : undefined,
+          range_time_start: (params.range_time ?? [])[0],
+          range_time_end: (params.range_time ?? [])[1],
         };
+
+        delete processParams.range_time;
+
         return processParams as Partial<SearchParams>;
       }}
       columns={columns}

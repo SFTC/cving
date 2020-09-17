@@ -4,7 +4,7 @@ nav:
   path: /components
 group:
   path: /
-  order: 2
+  order: 3
 ---
 
 <!-- TODO:示例，后续会干掉 -->

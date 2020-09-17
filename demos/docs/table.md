@@ -1,5 +1,6 @@
 ---
 title: table 表格
+toc: menu
 nav:
   path: /demos
 group:
@@ -11,11 +12,17 @@ group:
 
 table 表格示例是在使用 [pro-table](https://procomponents.ant.design/components/table) 开发业务功能中沉淀的一些解决方案，可以在相同或类似的业务场景中参考示例代码快速开发。
 
-## 最基本使用
+## 最简单使用
 
 这是一个"查询表格"最简单的结构
 
 <code src="../table/simple.tsx" background="#f5f5f5" />
+
+## 基本使用
+
+这是一个功能较为完备的"查询表格"
+
+<code src="../table/basic.tsx" background="#f5f5f5" />
 
 ## 条纹样式
 
@@ -81,17 +88,23 @@ const defaultColConfig = {
 ## 有必填的搜索项
 
 1. 对必填的搜索项使用 `TableSearchRequired` 组件包裹
-2. 自定义"查询"、"重置"、"导出"等按钮，增加搜索项必填校验
-3. 可以通过配置 columns 每个 item 的 `order` 属性对搜索项进行排序，权重大的排序靠前
+2. 初次加载不请求数据
+3. 自定义"查询"、"重置"、"导出"等按钮，增加搜索项必填校验
+4. 可以通过配置 columns 每个 item 的 `order` 属性对搜索项进行排序，权重大的排序靠前
 
 <code src="../table/searchQueryRequired.tsx" background="#f5f5f5" />
 
 ## 各种类型的搜索项
 
-包含类型：
-
-1. 普通 text
-2. 单选
-3. 多选
+| 字段名   | 搜索项类型 |
+| -------- | ---------- |
+| 姓名     | 普通 text  |
+| 年龄     | 数字       |
+| 性别     | 单选       |
+| 职位     | 多选       |
+| 月薪     | 金额       |
+| 出生日期 | 日期       |
+| 登记日期 | 时间       |
+| 日期范围 | 日期区间   |
 
 <code src="../table/valueType.tsx" background="#f5f5f5" />
