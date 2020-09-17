@@ -44,6 +44,8 @@ export interface ExtendOption extends ExtendOptionsInit {
   env: 'test' | 'dev' | 'pre' | 'mock' | 'build' | false;
   /** 业务状态码的字段名，默认是 errno | err_no */
   errno: string;
+  /** 业务状态码描述文案的字段名，默认是 errmsg | err_msg */
+  errmsg: string;
   /** 未登录的 errno 值，默认为 30200 */
   noLoginErrno: number;
   /** 业务处理成功的 errno 值，默认为 0 */
@@ -74,6 +76,7 @@ const packRequest = (extendOption?: Partial<ExtendOption>) => {
     loginUrlOnline: '',
     loginUrlOther: '',
     errno: 'errno',
+    errmsg: 'errmsg',
     ...extendOption,
   };
 
@@ -88,13 +91,17 @@ const packRequest = (extendOption?: Partial<ExtendOption>) => {
     await next();
 
     /** 后端返回数据 */
-    const { res } = ctx;
+    const { res, req } = ctx;
+
+    /** 如果有 getResponse 配置则不去进行任何处理直接返回 response */
+    if (req.options.getResponse) return;
 
     /** 业务状态码 */
-    const errno = +[res[options.errno], res.error_no].filter(v => !isEmpty(v));
+    const errno = +[res[options.errno], res.error_no].find(v => !isEmpty(v));
 
     /** 业务错误状态信息 */
-    const errmsg = res.errmsg || res.error_msg || '';
+    const errmsg =
+      [res[options.errmsg], res.error_msg].find(v => !isEmpty(v)) || '';
 
     switch (errno) {
       /** 业务状态成功 */

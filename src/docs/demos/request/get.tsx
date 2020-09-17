@@ -8,11 +8,13 @@ export default () => {
 
   const handleCLick = () => {
     customRequest(
-      'https://www.easy-mock.com/mock/5f585176d5906660c22dab65/cving/request-get',
+      'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/components/request/get',
       {
         params: { id: 1 },
+        getResponse: true,
       },
     ).then(res => {
+      console.log('res ---> ', res);
       setData(JSON.stringify(res));
     });
   };
