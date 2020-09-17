@@ -101,7 +101,7 @@ const packRequest = (extendOption?: Partial<ExtendOption>) => {
 
     /** 业务错误状态信息 */
     const errmsg =
-      [res[options.errmsg], res.error_msg].find(v => !isEmpty(v)) || '';
+      [res[options.errmsg], res.err_msg].find(v => !isEmpty(v)) || '';
 
     switch (errno) {
       /** 业务状态成功 */

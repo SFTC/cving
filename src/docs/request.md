@@ -65,16 +65,17 @@ customRequest
 
 **默认可接受所有 umi-request 的 extend options 参数 [点击查看](https://github.com/umijs/umi-request/blob/master/README_zh-CN.md#request-options-参数)**
 
-| 参数              | 说明                                    | 类型      | 默认值              | 可选值   |
-| ----------------- | --------------------------------------- | --------- | ------------------- | -------- |
-| env               | 环境变量                                | `string`  | `'dev'`             | `string` | `'test'` \| `'dev'` \| `'mock'` \|`'build'` |
-| errno             | 业务状态码的字段名                      | `string`  | `errno` \| `err_no` | --       |
-| noLoginErrno      | 未登录的 errno 值                       | `number`  | `30200`             | --       |
-| successErrno      | 业务处理成功的 errno 值                 | `number`  | `0`                 | --       |
-| loginUrlOnline    | `env === 'build'`，未登录时跳转到的 url | `string`  | `''`                | --       |
-| loginUrlOther     | `env !== 'build'`，未登录时跳转到的 url | `string`  | `''`                | --       |
-| getLoginUrlFromAE | 是否从后端获取未登录要跳转的 url        | `boolean` | `false`             | --       |
-| loginFieldFromAE  | 后端返回未登录要跳转 url 的字段名       | `string`  | `login_url`         | --       |
+| 参数              | 说明                                    | 类型      | 默认值                | 可选值   |
+| ----------------- | --------------------------------------- | --------- | --------------------- | -------- |
+| env               | 环境变量                                | `string`  | `'dev'`               | `string` | `'test'` \| `'dev'` \| `'mock'` \|`'build'` |
+| errno             | 业务状态码的字段名                      | `string`  | `errno` \| `err_no`   | --       |
+| errmsg            | 业务状态码描述文案的字段名              | `string`  | `errmsg` \| `err_msg` | --       |
+| noLoginErrno      | 未登录的 errno 值                       | `number`  | `30200`               | --       |
+| successErrno      | 业务处理成功的 errno 值                 | `number`  | `0`                   | --       |
+| loginUrlOnline    | `env === 'build'`，未登录时跳转到的 url | `string`  | `''`                  | --       |
+| loginUrlOther     | `env !== 'build'`，未登录时跳转到的 url | `string`  | `''`                  | --       |
+| getLoginUrlFromAE | 是否从后端获取未登录要跳转的 url        | `boolean` | `false`               | --       |
+| loginFieldFromAE  | 后端返回未登录要跳转 url 的字段名       | `string`  | `login_url`           | --       |
 
 ### errno
 
@@ -171,6 +172,10 @@ customRequest('/user');
 ### 返回非成功的业务状态码
 
 <code src="./demos/request/errnoError.tsx">
+
+### 自定义业务状态码描述信息字段名
+
+<code src="./demos/request/errmsgField.tsx">
 
 ### 自定义业务状态码字段名
 
