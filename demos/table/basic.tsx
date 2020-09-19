@@ -16,6 +16,7 @@ export interface TableListItem {
   name: string;
   age: number;
   sex: string;
+  class: string;
 }
 
 /** 性别映射 */
@@ -28,6 +29,7 @@ const columns: ProColumns<TableListItem>[] = [
   {
     title: '姓名',
     dataIndex: 'name',
+    render: _ => <a>{_}</a>,
   },
   {
     title: '年龄',
@@ -41,6 +43,11 @@ const columns: ProColumns<TableListItem>[] = [
     title: '性别',
     dataIndex: 'sex',
     valueEnum: sexMap,
+  },
+  {
+    title: '学历',
+    dataIndex: 'class',
+    hideInSearch: true,
   },
   {
     title: '操作',

@@ -56,6 +56,9 @@ const columns: ProColumns<TableListItem>[] = [
   {
     title: '占位4',
     dataIndex: 'value4',
+    ellipsis: true,
+    copyable: true,
+    width: 200,
   },
   {
     title: '占位5',

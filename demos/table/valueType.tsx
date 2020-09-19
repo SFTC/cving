@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
 import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 import request from 'umi-request';
+import { FormInstance } from 'antd/lib/form';
 
 export interface SearchParams {
   name: string;
@@ -58,11 +59,29 @@ const columns: ProColumns<TableListItem>[] = [
     valueEnum: sexMap,
   },
   {
+    title: '体重',
+    dataIndex: 'weight',
+    hideInTable: true,
+    // renderFormItem 多用来做一些和其他搜索项有关联的逻辑判断，详见：https://procomponents.ant.design/components/table#自定义表单项-1
+    renderFormItem: (_, { type, defaultRender, ...rest }, form) => {
+      if (type === 'form') {
+        return null;
+      }
+      const sex = form.getFieldValue('sex');
+      // 男生才可以用体重搜素
+      if (sex === '1') {
+        return <Input {...rest} placeholder="请输入" />;
+      }
+      return null;
+    },
+  },
+  {
     title: '职位',
     dataIndex: 'class',
     valueEnum: classMap,
     fieldProps: {
-      mode: 'multiple',
+      mode: 'tags',
+      tokenSeparators: [',', '，', ' '],
     },
   },
   {
@@ -81,6 +100,11 @@ const columns: ProColumns<TableListItem>[] = [
     valueType: 'dateTime',
   },
   {
+    title: '月份',
+    dataIndex: 'month',
+    valueType: 'dateMonth',
+  },
+  {
     title: '日期范围',
     dataIndex: 'range_time',
     valueType: 'dateRange',
@@ -89,11 +113,13 @@ const columns: ProColumns<TableListItem>[] = [
 
 export default () => {
   const actionRef = useRef<ActionType>();
+  const formRef = useRef<FormInstance<SearchParams>>();
 
   return (
     <ProTable<TableListItem, SearchParams>
       headerTitle="查询表格"
       rowKey="id"
+      formRef={formRef}
       actionRef={actionRef}
       toolBarRender={() => [
         <Button key="1" type="primary">

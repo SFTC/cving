@@ -17,5 +17,12 @@ export default defineConfig({
       path: 'https://github.com/SFTC/cving',
     },
   ],
+  locale: {
+    default: 'zh-CN',
+    antd: true,
+    title: false,
+    baseNavigator: true,
+    baseSeparator: '-',
+  },
   // more config: https://d.umijs.org/config
 });
