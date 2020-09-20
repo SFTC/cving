@@ -2,10 +2,15 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   title: 'cving',
+  base: '/cving',
+  publicPath: '/cving/',
   favicon:
-    'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
+    'https://user-images.githubusercontent.com/19237129/93707435-289d0500-fb61-11ea-81a4-d2c90bd14065.png',
   logo:
-    'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
+    'https://user-images.githubusercontent.com/19237129/93707435-289d0500-fb61-11ea-81a4-d2c90bd14065.png',
+  exportStatic: {},
+  dynamicImport: {},
+  outputPath: 'docs-dist',
   mode: 'site',
   resolve: {
     includes: ['src', 'docs', 'tools', 'demos'],
