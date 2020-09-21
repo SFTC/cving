@@ -47,6 +47,7 @@
   "devDependencies": {
     "@ant-design/pro-table": "latest",
     "@types/classnames": "^2.2.10",
+    "@types/react-copy-to-clipboard": "^4.3.0",
     "@umijs/fabric": "^2.2.2",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
@@ -58,6 +59,7 @@
     "mini-css-extract-plugin": "^0.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "^1.19.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "terser-webpack-plugin": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

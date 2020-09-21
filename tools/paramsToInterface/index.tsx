@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Space, Select, Switch, Table } from 'antd';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
+import {
+  Form,
+  Input,
+  Button,
+  Space,
+  Select,
+  Switch,
+  Table,
+  message,
+  Modal,
+} from 'antd';
+import { MinusOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import { firstUpperCase } from './utils';
 import styles from './index.less';
 
@@ -12,13 +23,15 @@ export default () => {
     console.log('values ---> ', values);
     const fieldStrArr = values.fields.map((field: any) => {
       return [
-        `/** ${field.desc}${field.remark && `【${field.remark}】`} */`,
-        `${field.fieldName}${field.isRequired ? '' : '?'}: ${field.dataType};`,
+        `  /** ${field.desc}${field.remark && `【${field.remark}】`} */`,
+        `  ${field.fieldName}${field.isRequired ? '' : '?'}: ${
+          field.dataType
+        };`,
       ].join('\n');
     });
-    const result = `
-export interface ${firstUpperCase(values.name) || 'Object'} {
-  ${fieldStrArr.join('\n')}
+    const result = `export interface ${firstUpperCase(values.name) ||
+      'Object'} {
+${fieldStrArr.join('\n')}
 }`;
     setInter(result);
 
@@ -75,6 +88,16 @@ export interface ${firstUpperCase(values.name) || 'Object'} {
       dataIndex: 'remark',
     },
   ];
+
+  /* 导入文本对话框逻辑 */
+  const [uploadParamsModalVisible, setUploadParamsModalVisible] = useState(
+    false,
+  );
+
+  const handleUploadParams = () => {
+    setUploadParamsModalVisible(true);
+  };
+  /* 导入文本对话框逻辑 */
 
   /* {
     fields: [
@@ -195,33 +218,50 @@ export interface ${firstUpperCase(values.name) || 'Object'} {
           <Button type="primary" htmlType="submit">
             一键生成
           </Button>
+          <Button type="primary" onClick={handleUploadParams}>
+            导入配置
+          </Button>
         </Form.Item>
       </Form>
 
-      {/* interface 定义 */}
-      {/* TODO:代码美化可用：https://github.com/react-syntax-highlighter/react-syntax-highlighter */}
-      {/* TODO:提供可一键复制功能 */}
-      <pre
-        style={{
-          padding: 16,
-          overflow: 'auto',
-          fontSize: '85%',
-          lineHeight: 1.45,
-          backgroundColor: '#f6f8fa',
-          borderRadius: 3,
-          width: 'min-content',
-        }}
-      >
-        <code>{inter}</code>
-      </pre>
+      <Space size={50} align="start">
+        {/* interface 定义 */}
+        {/* TODO:代码美化可用：https://github.com/react-syntax-highlighter/react-syntax-highlighter */}
+        {inter && (
+          <pre className={styles.interfaceContainer}>
+            <code>{inter}</code>
+            <CopyToClipboard
+              text={inter}
+              onCopy={() => {
+                message.success('复制成功');
+              }}
+            >
+              <Button type="link" className={styles.interfaceCopyBtn}>
+                <CopyOutlined />
+              </Button>
+            </CopyToClipboard>
+          </pre>
+        )}
+        {/* 参数表格 */}
+        {tableData.length > 0 && (
+          <Table
+            rowKey="fieldName"
+            columns={columns}
+            dataSource={tableData}
+            pagination={false}
+            bordered
+          />
+        )}
+      </Space>
 
-      {/* 参数表格 */}
-      <Table
-        columns={columns}
-        dataSource={tableData}
-        pagination={false}
-        bordered
-      />
+      {/* 导入文本对话框 */}
+      <Modal
+        title="参数信息"
+        visible={uploadParamsModalVisible}
+        onCancel={() => setUploadParamsModalVisible(false)}
+      >
+        <Input.TextArea rows={4} />
+      </Modal>
     </div>
   );
 };
