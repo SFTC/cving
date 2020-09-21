@@ -15,6 +15,9 @@ export default defineConfig({
   resolve: {
     includes: ['src', 'docs', 'tools', 'demos'],
   },
+  cssLoader: {
+    localsConvention: 'camelCase',
+  },
   navs: [
     null, // null 值代表保留约定式生成的导航，只做增量配置
     {
@@ -26,7 +29,7 @@ export default defineConfig({
     default: 'zh-CN',
     antd: true,
     title: false,
-    baseNavigator: true,
+    baseNavigator: false,
     baseSeparator: '-',
   },
   // more config: https://d.umijs.org/config

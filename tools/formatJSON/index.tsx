@@ -39,8 +39,9 @@ export default () => {
         id="Canvas"
         className={styles.canvas}
         style={{ height: '200px', overflow: 'auto', marginBottom: '0px' }}
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: formatJson }}
-      ></div>
+      />
     </div>
   );
 };
