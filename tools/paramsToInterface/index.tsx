@@ -12,7 +12,7 @@ import {
 } from 'antd';
 import { MinusOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { firstUpperCase, tableTextToInterface } from './utils';
+import { tableTextToFormData, formToInterface } from './utils';
 import styles from './index.less';
 
 export default () => {
@@ -20,22 +20,12 @@ export default () => {
   const [inter, setInter] = useState('');
   // 入参配置表格
   const [tableData, setTableData] = useState([]);
+  // 表单实例
+  const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
     console.log('values ---> ', values);
-    const fieldStrArr = values.fields.map((field: any) => {
-      return [
-        `  /** ${field.desc}${field.remark && `【${field.remark}】`} */`,
-        `  ${field.fieldName}${field.isRequired ? '' : '?'}: ${
-          field.dataType
-        };`,
-      ].join('\n');
-    });
-    const result = `export interface ${firstUpperCase(values.name) ||
-      'Object'} {
-${fieldStrArr.join('\n')}
-}`;
-    setInter(result);
+    setInter(formToInterface(values));
 
     setTableData(values.fields);
   };
@@ -97,30 +87,32 @@ ${fieldStrArr.join('\n')}
   );
   const [uploadParams, setUploadParams] = useState('');
 
-  const handleUploadParams = () => {
-    setUploadParamsModalVisible(true);
-  };
-
   const handleConfirmUploadParams = () => {
-    console.log('uploadParams ---> ', tableTextToInterface(uploadParams));
+    form.setFieldsValue({
+      name: 'Object',
+      fields: tableTextToFormData(uploadParams),
+    });
+
+    setUploadParamsModalVisible(false);
+
+    form.submit();
   };
   // #endregion
-
-  /* {
-    fields: [
-      {
-        isRequired: '1',
-        dataType: 'string',
-      },
-    ],
-  } */
 
   return (
     <div>
       <Form
+        form={form}
         name="form_json_to_interface"
         onFinish={onFinish}
-        initialValues={mockFormData}
+        initialValues={{
+          fields: [
+            {
+              isRequired: '1',
+              dataType: 'string',
+            },
+          ],
+        }}
       >
         {/* 接口名称 */}
         <Form.Item
@@ -211,6 +203,7 @@ ${fieldStrArr.join('\n')}
                     add({
                       isRequired: '1',
                       dataType: 'string',
+                      remark: '',
                     });
                   }}
                   block
@@ -226,7 +219,10 @@ ${fieldStrArr.join('\n')}
             <Button type="primary" htmlType="submit">
               一键生成
             </Button>
-            <Button type="primary" onClick={handleUploadParams}>
+            <Button
+              type="primary"
+              onClick={() => setUploadParamsModalVisible(true)}
+            >
               导入配置
             </Button>
           </Space>
