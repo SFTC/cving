@@ -9,4 +9,6 @@ group:
 
 ## 基本使用
 
+定义了表单常用配置和回调函数
+
 <code src="../form/index.tsx" />
