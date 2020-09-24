@@ -12,11 +12,13 @@ import {
 } from 'antd';
 import { MinusOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { firstUpperCase } from './utils';
+import { firstUpperCase, tableTextToInterface } from './utils';
 import styles from './index.less';
 
 export default () => {
+  // interface 定义
   const [inter, setInter] = useState('');
+  // 入参配置表格
   const [tableData, setTableData] = useState([]);
 
   const onFinish = (values: any) => {
@@ -89,15 +91,20 @@ ${fieldStrArr.join('\n')}
     },
   ];
 
-  /* 导入文本对话框逻辑 */
+  // #region 导入文本对话框逻辑
   const [uploadParamsModalVisible, setUploadParamsModalVisible] = useState(
     false,
   );
+  const [uploadParams, setUploadParams] = useState('');
 
   const handleUploadParams = () => {
     setUploadParamsModalVisible(true);
   };
-  /* 导入文本对话框逻辑 */
+
+  const handleConfirmUploadParams = () => {
+    console.log('uploadParams ---> ', tableTextToInterface(uploadParams));
+  };
+  // #endregion
 
   /* {
     fields: [
@@ -215,12 +222,14 @@ ${fieldStrArr.join('\n')}
           )}
         </Form.List>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            一键生成
-          </Button>
-          <Button type="primary" onClick={handleUploadParams}>
-            导入配置
-          </Button>
+          <Space size="large">
+            <Button type="primary" htmlType="submit">
+              一键生成
+            </Button>
+            <Button type="primary" onClick={handleUploadParams}>
+              导入配置
+            </Button>
+          </Space>
         </Form.Item>
       </Form>
 
@@ -256,11 +265,17 @@ ${fieldStrArr.join('\n')}
 
       {/* 导入文本对话框 */}
       <Modal
+        width="1000px"
         title="参数信息"
         visible={uploadParamsModalVisible}
         onCancel={() => setUploadParamsModalVisible(false)}
+        onOk={handleConfirmUploadParams}
       >
-        <Input.TextArea rows={4} />
+        <Input.TextArea
+          value={uploadParams}
+          rows={10}
+          onChange={e => setUploadParams(e.currentTarget.value)}
+        />
       </Modal>
     </div>
   );
