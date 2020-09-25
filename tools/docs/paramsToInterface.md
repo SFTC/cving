@@ -1,5 +1,6 @@
 ---
 title: paramsToInterface
+toc: false
 nav:
   path: /tools
 group:

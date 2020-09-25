@@ -11,7 +11,7 @@ export const firstUpperCase = ([first, ...rest]: string) =>
 export const formToInterface = (data: any) => {
   const fieldStrArr = data.fields.map((field: any) => {
     return [
-      `  /** ${field.desc}${field.remark && `【${field.remark}】`} */`,
+      `  /** ${field.desc}${field.remark ? `【${field.remark}】` : ''} */`,
       `  ${field.fieldName}${field.isRequired ? '' : '?'}: ${
         typeDataMap[field.dataType]
       };`,
@@ -26,16 +26,14 @@ ${fieldStrArr.join('\n')}
 
 export const tableTextToFormData = (text: string) => {
   const fieldList = text.split(/\n/g);
-  console.log('fieldList ---> ', fieldList);
 
   const FormData = fieldList.map(item => {
     const fieldItem = item.replace(/\s+/g, '|').split('|');
-    console.log('fieldItem ---> ', fieldItem);
     return {
-      dataType: typeDataMap[fieldItem[1]],
-      desc: fieldItem[3],
       fieldName: fieldItem[0],
+      dataType: typeDataMap[fieldItem[1]],
       isRequired: !!['是', true, 'true', '1', 1].includes(fieldItem[2]),
+      desc: fieldItem[3],
       remark: fieldItem[4],
     };
   });

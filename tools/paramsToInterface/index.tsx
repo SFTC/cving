@@ -12,52 +12,34 @@ import {
 } from 'antd';
 import { MinusOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import { deepCopy } from 'better-js-lib';
+import { FormListOperation } from 'antd/es/form/FormList';
+import { ColumnsType } from 'antd/es/table';
 import { tableTextToFormData, formToInterface } from './utils';
+import { FormParams, FormField } from './typing.d';
+
 import styles from './index.less';
 
 export default () => {
-  // interface 定义
+  /** interface 定义 */
   const [inter, setInter] = useState('');
   // 入参配置表格
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState<FormParams['fields']>([]);
   // 表单实例
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<FormParams>();
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: FormParams) => {
     console.log('values ---> ', values);
-    setInter(formToInterface(values));
+    // 过滤掉 fieldName 为空的字段
+    const formData = deepCopy(values);
+    formData.fields = formData.fields.filter(v => v.fieldName);
 
-    setTableData(values.fields);
+    setInter(formToInterface(formData));
+
+    setTableData(formData.fields);
   };
 
-  const mockFormData = {
-    name: 'addshoplabelrecord',
-    fields: [
-      {
-        dataType: 'string',
-        desc: '城市',
-        fieldName: 'city_ids',
-        isRequired: true,
-        remark: '格式如“111000000，33000000”，可多选',
-      },
-      {
-        dataType: 'string',
-        desc: '商户标签记录名称',
-        fieldName: 'record_name',
-        isRequired: true,
-        remark: '',
-      },
-      {
-        dataType: 'string',
-        desc: '品类',
-        fieldName: 'product_type',
-        isRequired: false,
-        remark: '格式如“1，2，3”，可多选',
-      },
-    ],
-  };
-
-  const columns = [
+  const columns: ColumnsType<FormField> = [
     {
       title: '字段',
       dataIndex: 'fieldName',
@@ -80,6 +62,28 @@ export default () => {
       dataIndex: 'remark',
     },
   ];
+
+  /** 全部重置 */
+  const handleResetAll = () => {
+    form.resetFields();
+
+    setTableData([]);
+
+    setInter('');
+  };
+
+  const handleChangeFieldName = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+    add: FormListOperation['add'],
+  ) => {
+    if (e.target.value && index === form.getFieldValue('fields').length - 1) {
+      add({
+        isRequired: '1',
+        dataType: 'string',
+      });
+    }
+  };
 
   // #region 导入文本对话框逻辑
   const [uploadParamsModalVisible, setUploadParamsModalVisible] = useState(
@@ -121,26 +125,25 @@ export default () => {
           className={styles.formInterfaceName}
           rules={[{ required: true, message: '请输入接口名称' }]}
         >
-          <Input placeholder="请输入接口名称" />
+          <Input allowClear placeholder="请输入接口名称" />
         </Form.Item>
         {/* 入参配置 */}
         <Form.List name="fields">
           {(fields, { add, remove }) => (
             <div>
               {fields.map((field, fieldIndex) => (
-                <Space
-                  key={field.key}
-                  style={{ display: 'flex', marginBottom: 8 }}
-                  align="start"
-                >
+                <Space key={field.key} size={30} align="start">
                   <Form.Item
                     {...field}
                     label="字段名"
                     name={[field.name, 'fieldName']}
                     fieldKey={[field.fieldKey, 'fieldName']}
-                    rules={[{ required: true, message: '请输入字段名' }]}
                   >
-                    <Input placeholder="请输入字段名" />
+                    <Input
+                      allowClear
+                      placeholder="请输入字段名"
+                      onChange={e => handleChangeFieldName(e, fieldIndex, add)}
+                    />
                   </Form.Item>
 
                   <Form.Item
@@ -170,9 +173,8 @@ export default () => {
                     label="字段说明"
                     name={[field.name, 'desc']}
                     fieldKey={[field.fieldKey, 'desc']}
-                    rules={[{ required: true, message: '请输入字段说明' }]}
                   >
-                    <Input placeholder="请输入字段说明" />
+                    <Input allowClear placeholder="请输入字段说明" />
                   </Form.Item>
 
                   <Form.Item
@@ -181,7 +183,10 @@ export default () => {
                     name={[field.name, 'remark']}
                     fieldKey={[field.fieldKey, 'remark']}
                   >
-                    <Input placeholder="这里可以输入一些额外备注，比如字段可选值" />
+                    <Input
+                      allowClear
+                      placeholder="这里可以输入一些额外备注，比如字段可选值"
+                    />
                   </Form.Item>
 
                   {fieldIndex !== 0 && (
@@ -203,7 +208,6 @@ export default () => {
                     add({
                       isRequired: '1',
                       dataType: 'string',
-                      remark: '',
                     });
                   }}
                   block
@@ -225,6 +229,7 @@ export default () => {
             >
               导入配置
             </Button>
+            <Button onClick={handleResetAll}>全部重置</Button>
           </Space>
         </Form.Item>
       </Form>
@@ -249,7 +254,7 @@ export default () => {
         )}
         {/* 参数表格 */}
         {tableData.length > 0 && (
-          <Table
+          <Table<FormField>
             rowKey="fieldName"
             columns={columns}
             dataSource={tableData}
