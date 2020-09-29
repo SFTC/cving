@@ -152,9 +152,13 @@ export default () => {
                     name={[field.name, 'dataType']}
                     fieldKey={[field.fieldKey, 'dataType']}
                   >
-                    <Select>
+                    {/* TODO:能支持多选 */}
+                    <Select style={{ width: '110px' }}>
                       <Select.Option value="string">string</Select.Option>
                       <Select.Option value="int">int</Select.Option>
+                      <Select.Option value="boolean">boolean</Select.Option>
+                      <Select.Option value="null">null</Select.Option>
+                      <Select.Option value="undefined">undefined</Select.Option>
                     </Select>
                   </Form.Item>
 
@@ -227,7 +231,7 @@ export default () => {
               type="primary"
               onClick={() => setUploadParamsModalVisible(true)}
             >
-              导入配置
+              导入表格文本
             </Button>
             <Button onClick={handleResetAll}>全部重置</Button>
           </Space>

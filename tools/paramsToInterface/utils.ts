@@ -2,20 +2,34 @@
 export const typeDataMap = {
   int: 'number',
   string: 'string',
+  boolean: 'boolean',
+  null: 'null',
+  undefined: 'undefined',
 };
 
 /** 字符串首字母变为大写 */
 export const firstUpperCase = ([first, ...rest]: string) =>
   first.toUpperCase() + rest.join('');
 
+/** 将 form 表单转为 interface 接口定义 */
 export const formToInterface = (data: any) => {
+  /** 处理注释（纯函数） */
+  const toComment = (desc?: string, remark?: string) => {
+    if (!desc && !remark) {
+      return null;
+    }
+    return `  /** ${desc ?? ''}${remark ? `【${remark}】` : ''} */`;
+  };
+
   const fieldStrArr = data.fields.map((field: any) => {
     return [
-      `  /** ${field.desc}${field.remark ? `【${field.remark}】` : ''} */`,
+      toComment(field.desc, field.remark),
       `  ${field.fieldName}${field.isRequired ? '' : '?'}: ${
         typeDataMap[field.dataType]
       };`,
-    ].join('\n');
+    ]
+      .filter(v => v)
+      .join('\n');
   });
   const result = `export interface ${firstUpperCase(data.name) || 'Object'} {
 ${fieldStrArr.join('\n')}
@@ -24,6 +38,7 @@ ${fieldStrArr.join('\n')}
   return result;
 };
 
+/** 将 table 文本转为 form 表单项，依赖 table 文本字段的顺序 */
 export const tableTextToFormData = (text: string) => {
   const fieldList = text.split(/\n/g);
 
