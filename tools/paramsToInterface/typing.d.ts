@@ -8,7 +8,7 @@ export interface FormParams {
 
 export interface FormField {
   /** 数据类型 */
-  dataType: string;
+  dataType: string[];
   /** 字段说明 */
   desc: string;
   /** 字段名 */

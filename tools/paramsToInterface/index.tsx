@@ -15,7 +15,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { deepCopy } from 'better-js-lib';
 import { FormListOperation } from 'antd/es/form/FormList';
 import { ColumnsType } from 'antd/es/table';
-import { tableTextToFormData, formToInterface } from './utils';
+import { tableTextToFormData, formToInterface, getInitField } from './utils';
 import { FormParams, FormField } from './typing.d';
 
 import styles from './index.less';
@@ -47,11 +47,12 @@ export default () => {
     {
       title: '类型',
       dataIndex: 'dataType',
+      render: (text: FormField['dataType']) => text.join('、'),
     },
     {
       title: '是否必传',
       dataIndex: 'isRequired',
-      render: (text: boolean) => (text ? '是' : '否'),
+      render: (text: FormField['isRequired']) => (text ? '是' : '否'),
     },
     {
       title: '说明',
@@ -60,6 +61,7 @@ export default () => {
     {
       title: '备注',
       dataIndex: 'remark',
+      render: (text: FormField['remark']) => text ?? '-',
     },
   ];
 
@@ -78,10 +80,7 @@ export default () => {
     add: FormListOperation['add'],
   ) => {
     if (e.target.value && index === form.getFieldValue('fields').length - 1) {
-      add({
-        isRequired: '1',
-        dataType: 'string',
-      });
+      add(getInitField());
     }
   };
 
@@ -110,12 +109,7 @@ export default () => {
         name="form_json_to_interface"
         onFinish={onFinish}
         initialValues={{
-          fields: [
-            {
-              isRequired: '1',
-              dataType: 'string',
-            },
-          ],
+          fields: [getInitField()],
         }}
       >
         {/* 接口名称 */}
@@ -152,8 +146,7 @@ export default () => {
                     name={[field.name, 'dataType']}
                     fieldKey={[field.fieldKey, 'dataType']}
                   >
-                    {/* TODO:能支持多选 */}
-                    <Select style={{ width: '110px' }}>
+                    <Select style={{ width: '110px' }} mode="multiple">
                       <Select.Option value="string">string</Select.Option>
                       <Select.Option value="int">int</Select.Option>
                       <Select.Option value="boolean">boolean</Select.Option>
@@ -209,10 +202,7 @@ export default () => {
                 <Button
                   type="dashed"
                   onClick={() => {
-                    add({
-                      isRequired: '1',
-                      dataType: 'string',
-                    });
+                    add(getInitField());
                   }}
                   block
                 >
