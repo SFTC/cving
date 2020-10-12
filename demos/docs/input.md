@@ -16,3 +16,7 @@ group:
 常用 Textarea 使用
 
 <code src="../input/textarea.tsx" />
+
+有时需求需要有输入建议的远程查询，可以使用 AutoComplete 组件，用法和 Select 类似，区别在于 AutoComplete 可以输入
+
+<code src="../input/remote.tsx" >
