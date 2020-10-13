@@ -20,3 +20,7 @@ group:
 Select 配合接口远程搜索，做了防抖操作和无数据是展示 loading，需要引入 lodash
 
 <code src="../select/remote.tsx" />
+
+多个 Select 框共享一个数据源
+
+<code src="../select/shareSource.tsx" />
