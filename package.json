@@ -9,6 +9,7 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "release": "npm run build && npm publish",
     "release:nrm": "npm run build && nrm use npm && npm publish . && nrm use taobao",
+    "postversion": "dumi assets",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
@@ -23,6 +24,7 @@
     "/es",
     "/dist"
   ],
+  "dumiAssets": "assets.json",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -53,7 +55,7 @@
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
     "babel-loader": "^8.1.0",
-    "dumi": "^1.0.9",
+    "dumi": "^1.1.0-beta.32",
     "father-build": "^1.18.4",
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",

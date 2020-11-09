@@ -45,3 +45,6 @@ example/.temp/*
 .eslintcache
 lib/**
 es/**
+
+# umi-ui
+assets.json

@@ -16,7 +16,7 @@ table 表格示例是在使用 [pro-table](https://procomponents.ant.design/comp
 
 这是一个"查询表格"最简单的结构
 
-<code src="../table/simple.tsx" background="#f5f5f5" />
+<code src="../table/simple.tsx" title="查询表格" background="#f5f5f5" thumbnail="https://user-images.githubusercontent.com/19237129/98517311-ad2a1b00-22a8-11eb-9efc-8527d525f265.png" />
 
 ## 基本使用
 
