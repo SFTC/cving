@@ -22,7 +22,8 @@
   "files": [
     "/lib",
     "/es",
-    "/dist"
+    "/dist",
+    "assets.json"
   ],
   "dumiAssets": "assets.json",
   "gitHooks": {
