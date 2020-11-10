@@ -5,6 +5,7 @@ export const typeDataMap = {
   int: 'number',
   number: 'number',
   string: 'string',
+  str: 'string',
   boolean: 'boolean',
   null: 'null',
   undefined: 'undefined',
@@ -41,6 +42,9 @@ ${fieldStrArr.join('\n')}
   return result;
 };
 
+/** 当字段的“是否必填”属性为以下枚举值时为必填 */
+const isRequiredArr = ['是', true, 'true', '1', 1, 'REQUIRED'];
+
 /** 将 table 文本转为 form 表单项，依赖 table 文本字段的顺序 */
 export const tableTextToFormData = (text: string) => {
   const fieldList = text.split(/\n/g);
@@ -50,7 +54,7 @@ export const tableTextToFormData = (text: string) => {
     return {
       fieldName: fieldItem[0],
       dataType: fieldItem[1].split('、').map(i => typeDataMap[i]),
-      isRequired: !!['是', true, 'true', '1', 1].includes(fieldItem[2]),
+      isRequired: !!isRequiredArr.includes(fieldItem[2]),
       desc: fieldItem[3],
       remark: fieldItem[4],
     };
