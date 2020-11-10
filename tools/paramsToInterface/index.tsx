@@ -82,7 +82,7 @@ export default () => {
 
   // #region 导入文本对话框逻辑
   const [uploadParamsModalVisible, setUploadParamsModalVisible] = useState(
-    true,
+    false,
   );
 
   const handleConfirmUploadParams = (text: string) => {
