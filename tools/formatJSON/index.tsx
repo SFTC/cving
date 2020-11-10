@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, Space } from 'antd';
 
 import { format } from './format';
 
 import styles from './index.less';
 import './format.less';
-
-const { TextArea } = Input;
 
 export default () => {
   /** 待格式化JSON数据 */
@@ -16,32 +14,46 @@ export default () => {
   const [formatJson, setFormatJson] = useState('');
 
   const handleClickFormat = async () => {
-    console.log(json);
     const formatJSON = await format(json);
     setFormatJson(formatJSON);
   };
 
+  const handleReset = async () => {
+    setJson('');
+    setFormatJson('');
+  };
+
   return (
-    <div>
-      <h4>待格式化JSON：</h4>
-      <TextArea
-        rows={4}
-        value={json}
-        onChange={e => {
-          setJson(e.target.value);
-        }}
-      />
-      <Button type="primary" onClick={handleClickFormat}>
-        格式化
-      </Button>
-      <h4>格式化JSON：</h4>
-      <div
-        id="Canvas"
-        className={styles.canvas}
-        style={{ height: '200px', overflow: 'auto', marginBottom: '0px' }}
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: formatJson }}
-      />
+    <div className={styles.container}>
+      <div className={styles.jsonContainer}>
+        <h4>待格式化JSON：</h4>
+        <Input.TextArea
+          rows={30}
+          value={json}
+          onChange={e => {
+            setJson(e.target.value);
+          }}
+        />
+      </div>
+
+      <div className={styles.operaContainer}>
+        <Space size={30} direction="vertical">
+          <Button type="primary" onClick={handleClickFormat}>
+            格式化
+          </Button>
+          <Button onClick={handleReset}>重置</Button>
+        </Space>
+      </div>
+
+      <div className={styles.jsonContainer}>
+        <h4>格式化JSON：</h4>
+        <div
+          id="Canvas"
+          className={styles.canvas}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: formatJson }}
+        />
+      </div>
     </div>
   );
 };

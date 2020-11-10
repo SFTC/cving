@@ -1,13 +1,11 @@
 // @ts-nocheck
 /* eslint-disable */
 
-window.SINGLE_TAB = '  ';
-// 是否带引号
-window.QuoteKeys = true;
+/** 是否带引号 */
+const QuoteKeys = true;
 
-function $id(id) {
-  return document.getElementById(id);
-}
+/** tab 缩进 */
+const TAB = '  ';
 
 function IsArray(obj) {
   return (
@@ -20,7 +18,6 @@ function IsArray(obj) {
 
 /** 格式化 json */
 export function format(json: string): Promise<string> {
-  SetTab();
   let html = '';
   return new Promise((resolve, reject) => {
     try {
@@ -109,7 +106,7 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
         let j = 0;
 
         for (let prop in obj) {
-          let quote = window.QuoteKeys ? '"' : '';
+          let quote = QuoteKeys ? '"' : '';
 
           html += GetRow(
             indent + 1,
@@ -191,7 +188,7 @@ function FormatLiteral(literal, quote, comma, indent, isArray, style) {
 function FormatFunction(indent, obj) {
   let tabs = '';
 
-  for (let i = 0; i < indent; i++) tabs += window.TAB;
+  for (let i = 0; i < indent; i++) tabs += TAB;
 
   let funcStrArray = obj.toString().split('\n');
 
@@ -207,7 +204,7 @@ function FormatFunction(indent, obj) {
 function GetRow(indent, data, isPropertyContent) {
   let tabs = '';
 
-  for (let i = 0; i < indent && !isPropertyContent; i++) tabs += window.TAB;
+  for (let i = 0; i < indent && !isPropertyContent; i++) tabs += TAB;
 
   if (data != null && data.length > 0 && data.charAt(data.length - 1) != '\n')
     data = data + '\n';
@@ -215,27 +212,9 @@ function GetRow(indent, data, isPropertyContent) {
   return tabs + data;
 }
 
-function QuoteKeysClicked() {
-  window.QuoteKeys = $id('QuoteKeys').checked;
-
-  format();
-}
-
 function TabSizeChanged() {
   format();
 }
-
-function SetTab() {
-  let select = $id('TabSize');
-
-  // TODO:暂时写死
-  /* window.TAB = MultiplyString(
-    parseInt(select.options[select.selectedIndex].value),
-    window.SINGLE_TAB,
-  ); */
-  window.TAB = '  ';
-}
-
 function MultiplyString(num, str) {
   let sb = [];
 
