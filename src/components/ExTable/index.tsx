@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form, Input, Table } from 'antd';
-import { ColumnsType, TableProps } from 'antd/es/table';
+import { ColumnType, ColumnsType, TableProps } from 'antd/es/table';
 import { FormInstance } from 'antd/lib/form';
 import { NamePath } from 'antd/lib/form/interface';
 
-export interface ExColumn extends ColumnsType<object> {
+export interface ExColumnType<T> extends ColumnType<T> {
   /**
    * 该列是否可编辑
    */
@@ -15,18 +15,28 @@ export interface ExColumn extends ColumnsType<object> {
   name?: NamePath;
 }
 
-export interface ExTableProps<T> extends Omit<TableProps<T>, 'columns'> {
-  columns?: ExColumn;
+export interface ExColumnGroupType<RecordType>
+  extends ExColumnType<RecordType> {}
+
+export type ExColumns<T = any> = (ExColumnGroupType<T> | ExColumnType<T>)[];
+
+export interface ExTableProps<T extends object = any>
+  extends Omit<TableProps<T>, 'columns'> {
+  columns?: ExColumns;
   form?: FormInstance;
 }
 
-const genColumnList = (columns: ExColumn): ColumnsType<object> =>
+const genColumnList = <T extends object = any>(
+  columns: ExColumns,
+): ColumnsType<T> =>
   columns.map(item => ({
     ...item,
-    render: (text: string) => {
-      const dom = (
-        <Form.Item>
-          <Input value={text} />
+    render: (text: string, _: any, index: number) => {
+      const dom = !item.key ? (
+        <Input value={text} />
+      ) : (
+        <Form.Item initialValue={text} name={[index, item.key]}>
+          <Input />
         </Form.Item>
       );
 
@@ -34,13 +44,13 @@ const genColumnList = (columns: ExColumn): ColumnsType<object> =>
     },
   }));
 
-const ExTable = <T, U = {}>(props: ExTableProps<T>) => {
-  const { form, columns = [] } = props;
+const ExTable = <T extends object = any, U = {}>(props: ExTableProps<T>) => {
+  const { form, columns = [], ...reset } = props;
 
   const propsColumns = genColumnList(columns);
   return (
     <Form form={form}>
-      <Table columns={propsColumns} />
+      <Table {...reset} columns={propsColumns} />
     </Form>
   );
 };
