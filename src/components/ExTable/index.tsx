@@ -32,6 +32,7 @@ const genColumnList = <T extends object = any>(
   columns.map(item => ({
     ...item,
     render: (text: string, _: any, index: number) => {
+      if (!item.editable) return text;
       const dom = !item.key ? (
         <Input value={text} />
       ) : (

@@ -9,6 +9,7 @@ export default () => {
     {
       title: '姓名',
       dataIndex: 'name',
+      editable: true,
       key: 'name',
     },
     {
