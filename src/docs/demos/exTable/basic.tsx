@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
-import ExTable, { ExColumns } from '../../../components/ExTable';
+import { ExTable, ExColumns } from 'cving';
 
 export default () => {
   const [form] = useForm();
