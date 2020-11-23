@@ -33,7 +33,10 @@ export default () => {
   const [tableData, setTableData] = useState<FormParams['fields']>([]);
   // 表单实例
   const [form] = Form.useForm<FormParams>();
-  const [howToUseParamsTableModalVisible, setHowToUseParamsTableModalVisible] = useState(false);
+  const [
+    howToUseParamsTableModalVisible,
+    setHowToUseParamsTableModalVisible,
+  ] = useState(false);
 
   const columns: ColumnsType<FormField> = [
     {
