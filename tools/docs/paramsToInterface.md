@@ -1,11 +1,11 @@
 ---
 title: paramsToInterface
 toc: false
+order: 2
 nav:
   path: /tools
 group:
   path: /
-  order: 3
 ---
 
 # paramsToInterface

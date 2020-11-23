@@ -1456,6 +1456,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.3.1":
+  version "7.12.5"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.12.5.tgz?cache=0&sync_timestamp=1604441104026&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha1-QQ5+SHRB4bNgwpvnFdhw2bmFiC4=
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4", "@babel/template@^7.3.3", "@babel/template@^7.4.0", "@babel/template@^7.4.4":
   version "7.10.4"
   resolved "https://registry.npm.taobao.org/@babel/template/download/@babel/template-7.10.4.tgz#3251996c4200ebc71d1a8fc405fba940f36ba278"
@@ -2591,6 +2598,13 @@
   integrity sha1-RhTlunVZZXQ44Xdmu5Xvbtasw/o=
   dependencies:
     "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react-syntax-highlighter@^13.5.0":
+  version "13.5.0"
+  resolved "https://registry.npm.taobao.org/@types/react-syntax-highlighter/download/@types/react-syntax-highlighter-13.5.0.tgz#b93c05f28844e7c35a5f1d38d3819099ffa82fbd"
+  integrity sha1-uTwF8ohE58NaXx0404GQmf+oL70=
+  dependencies:
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.9.43":
@@ -8352,6 +8366,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
+highlight.js@^10.1.1, highlight.js@~10.4.0:
+  version "10.4.0"
+  resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-10.4.0.tgz#ef3ce475e5dfa7a48484260b49ea242ddab823a0"
+  integrity sha1-7zzkdeXfp6SEhCYLSeokLdq4I6A=
+
 history-with-query@4.10.3:
   version "4.10.3"
   resolved "https://registry.npm.taobao.org/history-with-query/download/history-with-query-4.10.3.tgz#9430a6f59a223796a68a436c0c4c7590233805a6"
@@ -10628,6 +10647,14 @@ lowercase-keys@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/lowercase-keys/download/lowercase-keys-2.0.0.tgz#2603e78b7b4b0006cbca2fbcc8a3202558ac9479"
   integrity sha1-JgPni3tLAAbLyi+8yKMgJVislHk=
+
+lowlight@^1.14.0:
+  version "1.17.0"
+  resolved "https://registry.npm.taobao.org/lowlight/download/lowlight-1.17.0.tgz?cache=0&sync_timestamp=1605775926515&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flowlight%2Fdownload%2Flowlight-1.17.0.tgz#a1143b2fba8239df8cd5893f9fe97aaf8465af4a"
+  integrity sha1-oRQ7L7qCOd+M1Yk/n+l6r4Rlr0o=
+  dependencies:
+    fault "^1.0.0"
+    highlight.js "~10.4.0"
 
 lru-cache@^4.0.1:
   version "4.1.5"
@@ -13160,7 +13187,7 @@ prism-react-renderer@^1.1.1:
   resolved "https://registry.npm.taobao.org/prism-react-renderer/download/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
   integrity sha1-HBvmGx65RGoUbKelC3vPNvKnCkQ=
 
-prismjs@^1.21.0:
+prismjs@^1.21.0, prismjs@^1.22.0, prismjs@~1.22.0:
   version "1.22.0"
   resolved "https://registry.npm.taobao.org/prismjs/download/prismjs-1.22.0.tgz?cache=0&sync_timestamp=1602354884260&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprismjs%2Fdownload%2Fprismjs-1.22.0.tgz#73c3400afc58a823dd7eed023f8e1ce9fd8977fa"
   integrity sha1-c8NACvxYqCPdfu0CP44c6f2Jd/o=
@@ -14171,6 +14198,17 @@ react-side-effect@^2.1.0:
   resolved "https://registry.npm.taobao.org/react-side-effect/download/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha1-HOSotERRaMSH7STauIZCH3TTgNM=
 
+react-syntax-highlighter@^15.3.0:
+  version "15.3.0"
+  resolved "https://registry.npm.taobao.org/react-syntax-highlighter/download/react-syntax-highlighter-15.3.0.tgz#d8bf103123550e0d637fe8cb1feaf68e22bf9944"
+  integrity sha1-2L8QMSNVDg1jf+jLH+r2jiK/mUQ=
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    highlight.js "^10.1.1"
+    lowlight "^1.14.0"
+    prismjs "^1.22.0"
+    refractor "^3.2.0"
+
 react-tween-state@^0.1.5:
   version "0.1.5"
   resolved "https://registry.npm.taobao.org/react-tween-state/download/react-tween-state-0.1.5.tgz#e98b066551efb93cb92dd1be14995c2e3deae339"
@@ -14344,6 +14382,15 @@ redux@^4.0.0, redux@^4.0.1, redux@^4.0.4:
   dependencies:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
+
+refractor@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/refractor/download/refractor-3.2.0.tgz#bc46f7cfbb6adbf45cd304e8e299b7fa854804e0"
+  integrity sha1-vEb3z7tq2/Rc0wTo4pm3+oVIBOA=
+  dependencies:
+    hastscript "^6.0.0"
+    parse-entities "^2.0.0"
+    prismjs "~1.22.0"
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"

@@ -1,12 +1,12 @@
 ---
 title: 介绍
+order: 1
 nav:
   title: 工具
   path: /tools
   order: 3
 group:
   path: /
-  order: 1
 toc: false
 ---
 
