@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { Form, Input } from 'antd';
 import { getPageQuery } from './utils/utils';
 import { queryList } from './service';
@@ -166,7 +165,7 @@ const ListTable: React.FC<ListTableProps> = () => {
   ];
 
   return (
-    <PageHeaderWrapper title={false}>
+    <>
       <CardBlock title="凭证查询">
         <Form form={searchForm}>
           <Form.Item
@@ -209,7 +208,7 @@ const ListTable: React.FC<ListTableProps> = () => {
           allowParamsNull={false}
         />
       </CardBlock>
-    </PageHeaderWrapper>
+    </>
   );
 };
 

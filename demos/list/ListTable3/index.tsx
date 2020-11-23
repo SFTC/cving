@@ -1,6 +1,5 @@
 import { Button, Form, Row, Modal, message } from 'antd';
 import React, { FC, useState, useEffect } from 'react';
-import { PageHeaderWrapper } from '@ant-design/pro-layout';
 // import { connect } from 'dva';
 import moment, { Moment } from 'moment';
 import styles from './style.less';
@@ -178,7 +177,7 @@ const ManualEntry: FC<ManualEntryProps> = props => {
   }, []);
 
   return (
-    <PageHeaderWrapper title={false} className={styles.main}>
+    <div className={styles.main}>
       <Form
         hideRequiredMark
         style={{ marginTop: 8 }}
@@ -247,7 +246,7 @@ const ManualEntry: FC<ManualEntryProps> = props => {
       ) : (
         ''
       )}
-    </PageHeaderWrapper>
+    </div>
   );
 };
 
