@@ -5,6 +5,7 @@ import {
   ExTableProps
 } from './components/ExTable';
 
+export { default as AuthButton } from './components/AuthButton';
 export { default as request } from './components/request';
 export { default as TableColumnOperateBtnList } from './components/TableColumnOperateBtnList';
 export { default as TableSearchRequired } from './components/TableSearchRequired';
