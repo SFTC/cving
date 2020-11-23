@@ -1,11 +1,11 @@
 ---
 title: request
 toc: menu
+order: 3
 nav:
   path: /components
 group:
   path: /
-  order: 2
 ---
 
 # request
@@ -150,6 +150,10 @@ customRequest('/user');
 // 页面会直接跳转到 https://www.xxxx.com
 ```
 
+### 获取原始 Response 内容
+
+有一些场景下需要自定义处理后端返回信息，可以通过设置 request 的 `getResponse` 参数为 `true`，来获取到源 Response 对象及完整的 data 结果。需要注意的是，这些设置后就不会再执行对业务状态码和校验登录的逻辑了。使用方法可参考[示例代码](#获取源-response-内容)。
+
 ## 代码示例
 
 这里将会提供一些常用功能的代码示例，方便大家直接拷贝使用。
@@ -197,3 +201,7 @@ customRequest('/user');
 ### 自定义未登录的 errno 值
 
 <code src="./demos/request/noLoginErrnoCustom.tsx">
+
+### 获取源 response 内容
+
+<code src="./demos/request/getResponse.tsx">

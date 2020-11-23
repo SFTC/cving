@@ -1,10 +1,10 @@
 ---
 title: FormSpan
+order: 4
 nav:
   path: /demos
 group:
   path: /
-  order: 2
 ---
 
 ## 一种解决 PM 只希望展示而 RD 却要求仍旧要提交的表单项展示组件

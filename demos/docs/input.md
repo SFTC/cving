@@ -1,10 +1,10 @@
 ---
 title: Input
+order: 5
 nav:
   path: /demos
 group:
   path: /
-  order: 2
 ---
 
 ## 按显示文字查找

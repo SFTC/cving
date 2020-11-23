@@ -9,15 +9,15 @@ hero:
     - text: 快速开始 →
       link: /components
 features:
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
-    title: 开箱即用
-    desc: Balabala
+  - icon: https://gw.alipayobjects.com/os/q/cms/images/k9ziitmp/13668549-b393-42a2-97c3-a6365ba87ac2_w96_h96.png
+    title: 内容丰富
+    desc: 可复用的业务组件 + 可直接使用代码示例 + 实用的小工具
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d60657df-0822-4631-9d7c-e7a869c2f21c/k79dmz3q_w126_h126.png
     title: 提效
-    desc: Balabala
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
-    title: 示例完备
-    desc: Balabala
+    desc: 结合 umi-ui，快速搭建页面
+  - icon: https://gw.alipayobjects.com/os/q/cms/images/k9zij2bh/67f75d56-0d62-47d6-a8a5-dbd0cb79a401_w96_h96.png
+    title: TypeScript
+    desc: 使用 TypeScript 开发，提供完整的类型定义文件
 footer: Open-source MIT Licensed | Copyright © 2020-present
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: 介绍
+order: 1
 nav:
   title: 代码示例
   path: /demos
   order: 2
 group:
   path: /
-  order: 1
 toc: false
 ---
 
