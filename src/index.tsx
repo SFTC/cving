@@ -2,7 +2,7 @@ import {
   ExColumns,
   ExColumnType,
   ExColumnGroupType,
-  ExTableProps,
+  ExTableProps
 } from './components/ExTable';
 
 export { default as request } from './components/request';
@@ -14,5 +14,5 @@ export type {
   ExColumns,
   ExColumnType,
   ExColumnGroupType,
-  ExTableProps,
+  ExTableProps
 }
