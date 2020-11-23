@@ -1,11 +1,11 @@
 ---
 title: request
 toc: menu
+order: 3
 nav:
   path: /components
 group:
   path: /
-  order: 2
 ---
 
 # request

@@ -1,10 +1,10 @@
 ---
 title: 可编辑表格
+order: 2
 nav:
   path: /components
 group:
   path: /
-  order: 3
 ---
 
 ## 基本使用

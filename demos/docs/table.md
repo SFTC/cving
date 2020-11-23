@@ -1,11 +1,11 @@
 ---
 title: table 表格
+order: 2
 toc: menu
 nav:
   path: /demos
 group:
   path: /
-  order: 3
 ---
 
 # table

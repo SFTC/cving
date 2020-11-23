@@ -1,10 +1,10 @@
 ---
 title: form 表单
+order: 3
 nav:
   path: /demos
 group:
   path: /
-  order: 2
 ---
 
 ## 基本使用
