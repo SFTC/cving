@@ -3188,10 +3188,10 @@
     umi-webpack-bundle-analyzer "3.6.0"
     zlib "1.0.5"
 
-"@umijs/preset-dumi@1.1.0-beta.31":
-  version "1.1.0-beta.31"
-  resolved "https://registry.npm.taobao.org/@umijs/preset-dumi/download/@umijs/preset-dumi-1.1.0-beta.31.tgz#0f973fa763e9159f1305b81e9a9e7f9a73505394"
-  integrity sha1-D5c/p2PpFZ8TBbgemp5/mnNQU5Q=
+"@umijs/preset-dumi@1.1.0-rc.3":
+  version "1.1.0-rc.3"
+  resolved "https://registry.npmjs.org/@umijs/preset-dumi/-/preset-dumi-1.1.0-rc.3.tgz#b59693a464aca9a502261bde6c86ed255ef6b77b"
+  integrity sha512-Q9gLPJZ8SbX/OsJ0+0C3ExSzcnVFlVVTGZjHkSL2fNtDPfaFyqZg2SNa7DLmQLTvSMizefaYtREuu37zvE6vfg==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/generator" "^7.7.2"
@@ -3206,7 +3206,7 @@
     copy-text-to-clipboard "^2.2.0"
     deepmerge "^4.2.2"
     dumi-assets-types "1.0.0-beta.4"
-    dumi-theme-default "1.0.0-beta.15"
+    dumi-theme-default "1.0.0-rc.2"
     enhanced-resolve "^4.1.1"
     github-slugger "^1.3.0"
     hast-util-has-property "^1.0.4"
@@ -6297,20 +6297,21 @@ dumi-assets-types@1.0.0-beta.4:
   resolved "https://registry.npm.taobao.org/dumi-assets-types/download/dumi-assets-types-1.0.0-beta.4.tgz?cache=0&sync_timestamp=1604298867748&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdumi-assets-types%2Fdownload%2Fdumi-assets-types-1.0.0-beta.4.tgz#85d2c24e17e0bdf219be1319307c23cee82590aa"
   integrity sha1-hdLCThfgvfIZvhMZMHwjzuglkKo=
 
-dumi-theme-default@1.0.0-beta.15:
-  version "1.0.0-beta.15"
-  resolved "https://registry.npm.taobao.org/dumi-theme-default/download/dumi-theme-default-1.0.0-beta.15.tgz#4da5b32f5650add2cf35584190308d2e8b6acc18"
-  integrity sha1-TaWzL1ZQrdLPNVhBkDCNLotqzBg=
+dumi-theme-default@1.0.0-rc.2:
+  version "1.0.0-rc.2"
+  resolved "https://registry.npmjs.org/dumi-theme-default/-/dumi-theme-default-1.0.0-rc.2.tgz#c0e0618e0a2e902dab1ead7a5077a6c0a52441cd"
+  integrity sha512-Q5SxsstgCY8Xa4Nwhj2CgFpvqRPBAu8wlc0+eMMg81E6wR9VQpaBTEQubdyggFrrprlsLP9kyZFRMUKGSc7H7g==
   dependencies:
     prism-react-renderer "^1.1.1"
     prismjs "^1.21.0"
+    rc-tabs "^11.7.1"
 
-dumi@^1.1.0-beta.32:
-  version "1.1.0-beta.32"
-  resolved "https://registry.npm.taobao.org/dumi/download/dumi-1.1.0-beta.32.tgz#f8a5a57fac0adf504bccd3bd8ad9b8c7a21ce7a4"
-  integrity sha1-+KWlf6wK31BLzNO9itm4x6Ic56Q=
+dumi@^1.1.0-rc.3:
+  version "1.1.0-rc.3"
+  resolved "https://registry.npmjs.org/dumi/-/dumi-1.1.0-rc.3.tgz#a06bf46df7f7dc7c177ab87dbe5786813892726b"
+  integrity sha512-u+I24kAd3RVYPUyf+1BDOupKurstTe1PqE0xzH5uHRj9zorRRBYG7cCvtCnJngcYCFK0Z1pPQ9r+qdFd1DFFQA==
   dependencies:
-    "@umijs/preset-dumi" "1.1.0-beta.31"
+    "@umijs/preset-dumi" "1.1.0-rc.3"
     umi "^3.0.0"
 
 duplexer3@^0.1.4:
@@ -13868,6 +13869,19 @@ rc-table@~7.9.2:
     rc-util "^5.0.4"
     shallowequal "^1.1.0"
 
+rc-tabs@^11.7.1:
+  version "11.7.1"
+  resolved "https://registry.npmjs.org/rc-tabs/-/rc-tabs-11.7.1.tgz#c23fc53e59bd8b7250818a1a29bca1896450d79b"
+  integrity sha512-ZLQ5ou70j32GKcOKRZvd5JQZOJhcDy62dr9kqiWDvt6g5v8LkpxIGAc0dWtCWOEWkO/QezwuNqWufMborkfrnQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    classnames "2.x"
+    raf "^3.4.1"
+    rc-dropdown "^3.1.3"
+    rc-menu "^8.6.1"
+    rc-resize-observer "^0.2.1"
+    rc-util "^5.5.0"
+
 rc-tabs@~11.6.0:
   version "11.6.2"
   resolved "https://registry.npm.taobao.org/rc-tabs/download/rc-tabs-11.6.2.tgz?cache=0&sync_timestamp=1600138991282&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-tabs%2Fdownload%2Frc-tabs-11.6.2.tgz#0732a3f6ef36a14343f9afe47df7f29971e8020b"
@@ -14009,6 +14023,14 @@ rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.4, rc-util@^5.0.5, rc-util@^5.0.6, 
   version "5.3.5"
   resolved "https://registry.npm.taobao.org/rc-util/download/rc-util-5.3.5.tgz?cache=0&sync_timestamp=1601190928808&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-util%2Fdownload%2Frc-util-5.3.5.tgz#cec4daeedee4ace4400b4e2b9ac71cd4847e70cf"
   integrity sha1-zsTa7t7krORAC04rmscc1IR+cM8=
+  dependencies:
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.npmjs.org/rc-util/-/rc-util-5.5.0.tgz#76321bcb5c12f01f42bff9b971f170ff19506e5a"
+  integrity sha512-YJB+zZGvCll/bhxXRVLAekr7lOvTgqMlRIhgINoINfUek7wQvi5sft46NOi3yYUYhocpuW4k8+5okW46sBsZAQ==
   dependencies:
     react-is "^16.12.0"
     shallowequal "^1.1.0"
