@@ -1,22 +1,29 @@
-import  React  from 'react';
+import React from 'react';
 import { Button } from 'antd';
+import { ButtonProps } from 'antd/lib/button/index';
 
-export interface ButtonProps {
-  authNumber: number;
-  authArray: Array<number>;
-  content: string;
-  callBackFun?: () => void;
-};
-const Auth = (props: ButtonProps) => {
-  // eslint-disable-next-line no-bitwise
-  const isShow = Boolean(~props.authArray.indexOf(props.authNumber));
-  if (isShow){
+export declare type AuthButtonProps = {
+  authNumber?: number | Array<number>;
+  authArray?: Array<number>;
+  personalAuthFun?: () => Boolean;
+} & ButtonProps;
+const Auth = (props: AuthButtonProps) => {
+  let isShow: Boolean = false;
+  if (typeof props.authNumber === 'number') {
+    isShow = props.authArray?.includes(props.authNumber) || false;
+  } else if (Array.isArray(props.authNumber)) {
+    isShow =
+      props.authNumber?.every(val => props.authArray?.includes(val)) || false;
+  } else if (typeof props.personalAuthFun === 'function') {
+    isShow = props.personalAuthFun();
+  }
+  if (isShow) {
     return (
-      <Button type="primary" onClick={props.callBackFun}>
-        { props.content }
+      <Button type="primary" {...props}>
+        {props.children}
       </Button>
     );
   }
-  return <></>
+  return <></>;
 };
 export default Auth;
