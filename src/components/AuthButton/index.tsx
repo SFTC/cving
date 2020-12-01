@@ -9,17 +9,21 @@ export declare type AuthButtonProps = {
 } & ButtonProps;
 const Auth = (props: AuthButtonProps) => {
   let isShow: Boolean = false;
-  if (typeof props.authNumber === 'number') {
-    isShow = props.authArray?.includes(props.authNumber) || false;
-  } else if (Array.isArray(props.authNumber)) {
-    isShow =
-      props.authNumber?.every(val => props.authArray?.includes(val)) || false;
-  } else if (typeof props.personalAuthFun === 'function') {
-    isShow = props.personalAuthFun();
+  const propNumber = props.authNumber;
+  const propArray = props.authArray;
+  const propFun = props.personalAuthFun;
+
+  if (typeof propNumber === 'number') {
+    isShow = propArray?.includes(propNumber) || false;
+  } else if (Array.isArray(propNumber)) {
+    isShow = propNumber?.every(val => propArray?.includes(val)) || false;
+  } else if (typeof propFun === 'function') {
+    isShow = propFun();
   }
+  const { authNumber, authArray, personalAuthFun, ...rest } = props;
   if (isShow) {
     return (
-      <Button type="primary" {...props}>
+      <Button type="primary" {...rest}>
         {props.children}
       </Button>
     );

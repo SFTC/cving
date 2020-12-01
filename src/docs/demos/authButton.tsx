@@ -3,7 +3,7 @@ import { AuthButton } from 'cving';
 
 export default () => {
   const initPro = {
-    authNumber: [300],
+    authNumber: [100],
     authArray: [100, 200],
     // personalAuthFun:()=>{
     //   return [100, 200].includes(100)
@@ -11,10 +11,9 @@ export default () => {
     onClick: () => {
       window.location.href = 'http://www.baidu.com';
     },
-    loading: true,
   };
   return (
-    <AuthButton {...initPro} danger size="large">
+    <AuthButton {...initPro} size="large">
       测试
     </AuthButton>
   );
