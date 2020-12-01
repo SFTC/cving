@@ -21,6 +21,7 @@ table 表格示例是在使用 [pro-tablem@2.8.1](https://procomponents.ant.desi
   thumbnail="https://user-images.githubusercontent.com/19237129/98517311-ad2a1b00-22a8-11eb-9efc-8527d525f265.png"
   tags='["table表格"]'
   description="这是一个'查询表格'最简单的结构"
+  previewUrl="https://sftc.github.io/cving/demos/table#%E6%9C%80%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"
 />
 
 ## 基本使用

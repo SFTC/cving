@@ -1,7 +1,6 @@
 {
   "name": "cving",
-  "version": "0.1.6",
-  "private": true,
+  "version": "0.1.7",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -60,7 +59,7 @@
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
     "babel-loader": "^8.1.0",
-    "dumi": "^1.1.0-beta.32",
+    "dumi": "^1.1.0-rc.3",
     "father-build": "^1.18.4",
     "gh-pages": "^3.0.0",
     "husky": "^4.3.0",
