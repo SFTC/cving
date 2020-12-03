@@ -5,6 +5,12 @@
 
 用于提效的业务物料库
 
-## 发版流程
+## npm 发版流程
 
 修改 package.json 中的版本号，执行 `npm run release`
+
+## 部署 github.io
+
+```bash
+$ npm run deploy
+```
