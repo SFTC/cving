@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Form } from 'antd';
-import FormSpan from './FormSpan';
+import FormSpan from '../../../components/FormSpan';
 import styles from './demo.less';
 
 export default () => {

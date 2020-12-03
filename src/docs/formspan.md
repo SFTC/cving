@@ -2,7 +2,7 @@
 title: FormSpan
 order: 4
 nav:
-  path: /demos
+  path: /components
 group:
   path: /
 ---
@@ -14,7 +14,7 @@ group:
 ## 基本使用
 
 <code
-  src="../formspan/demo.tsx"
+  src="./demos/formspan/demo.tsx"
   title="可以 submit 的 span"
   background="#f5f5f5"
   thumbnail="https://user-images.githubusercontent.com/12001781/100983285-16d5d600-3584-11eb-9ccf-a825d6d400af.png"
