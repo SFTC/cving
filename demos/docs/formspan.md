@@ -17,7 +17,7 @@ group:
   src="../formspan/demo.tsx"
   title="可以 submit 的 span"
   background="#f5f5f5"
-  thumbnail="https://crm-1258916733.cos.ap-shanghai.myqcloud.com/4d/a7/242920b091d943f24afbd2cb320d01d2/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1008d8e2-d3ad-4430-9d38-d349de2eabc8.png"
+  thumbnail="https://user-images.githubusercontent.com/12001781/100983285-16d5d600-3584-11eb-9ccf-a825d6d400af.png"
   tags='["formSpan"]'
   description="这是一个在form表单中只用来展示，不可修改，但可以提交的span"
 />
