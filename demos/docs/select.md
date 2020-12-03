@@ -12,7 +12,7 @@ group:
 ## 基本使用
 
 <code
-  title="select 的基本使用" 
+  title="select 的基本使用"
   src="../select/basic.tsx"  
   thumbnail="https://user-images.githubusercontent.com/13635964/101019448-f6b80e00-35a7-11eb-89cf-806ed99a76cd.png"
   tags='["Select"]'

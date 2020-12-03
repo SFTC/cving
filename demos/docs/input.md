@@ -12,7 +12,7 @@ group:
 ## 带后缀的 Input
 
 <code
-  title="带后缀的 Input" 
+  title="带后缀的 Input"
   src="../input/basicSuffix.tsx"  
   thumbnail="https://user-images.githubusercontent.com/13635964/101020300-3df2ce80-35a9-11eb-8fd5-c90579d74f15.png"
   tags='["Input"]'
@@ -21,7 +21,7 @@ group:
 ## Textarea 基本使用
 
 <code
-  title="Textarea 基本使用" 
+  title="Textarea 基本使用"
   src="../input/textarea.tsx"  
   thumbnail="https://user-images.githubusercontent.com/13635964/101020385-61b61480-35a9-11eb-8e55-99588ea77943.png"
   tags='["Input"]'
@@ -30,7 +30,7 @@ group:
 ## Input 远程查询
 
 <code
-  title="Input 远程查询" 
+  title="Input 远程查询"
   src="../input/remote.tsx"  
   thumbnail="https://user-images.githubusercontent.com/13635964/101020433-7abec580-35a9-11eb-8812-b22d4865c792.png"
   tags='["Input"]'
