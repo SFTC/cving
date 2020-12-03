@@ -7,8 +7,6 @@ group:
   path: /
 ---
 
-<!-- TODO:示例，后续会干掉 -->
-
 ## 基本使用
 
 <code src="./demos/authButton.tsx">
