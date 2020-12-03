@@ -240,7 +240,7 @@ export default () => {
                     }}
                     block
                   >
-                    <PlusOutlined /> Add field
+                    <PlusOutlined /> 添加字段
                   </Button>
                 </Form.Item>
               </div>
