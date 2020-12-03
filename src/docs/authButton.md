@@ -14,6 +14,7 @@ group:
 ## 基本使用
 
 <code src="./demos/authButton.tsx">
+
 ## 参数配置
 
 **AuthButton 默认接收 Button 组件所有参数,另外的参数如下**
@@ -22,5 +23,3 @@ group:
 | authNumber | 按钮对应的权限 | `Number`\|`Array<Number>` | `-` |
 | authArray | 用户所有的权限 | `Array<Number>` | `-` |
 | personalAuthFun | 自定义的权限函数 | `Function` | `-` |
-
-More skills for writing demo: https://d.umijs.org/guide/demo-principle
