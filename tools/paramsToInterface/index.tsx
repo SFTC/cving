@@ -9,6 +9,8 @@ import {
   Table,
   message,
   Card,
+  Row,
+  Col,
 } from 'antd';
 import {
   MinusOutlined,
@@ -25,6 +27,10 @@ import { tableTextToFormData, formToInterface, getInitField } from './utils';
 import { FormParams, FormField } from './typing.d';
 
 import styles from './index.less';
+
+/** 多行表单，处理只有第一行有 field */
+const dealField = (fieldIndex: number, fieldName: string) =>
+  fieldIndex === 0 ? fieldName : '';
 
 export default () => {
   /** interface 定义 */
@@ -121,6 +127,8 @@ export default () => {
           initialValues={{
             fields: [getInitField()],
           }}
+          labelCol={{ span: 24 }}
+          wrapperCol={{ span: 24 }}
         >
           {/* 接口名称 */}
           <Form.Item
@@ -136,80 +144,92 @@ export default () => {
             {(fields, { add, remove }) => (
               <div>
                 {fields.map((field, fieldIndex) => (
-                  <Space key={field.key} size={30} align="start">
-                    <Form.Item
-                      {...field}
-                      label="字段名"
-                      name={[field.name, 'fieldName']}
-                      fieldKey={[field.fieldKey, 'fieldName']}
-                    >
-                      <Input
-                        allowClear
-                        placeholder="请输入字段名"
-                        onChange={e =>
-                          handleChangeFieldName(e, fieldIndex, add)
-                        }
-                      />
-                    </Form.Item>
+                  <Row key={field.key} gutter={[16, 0]}>
+                    <Col span={5}>
+                      <Form.Item
+                        {...field}
+                        label={dealField(fieldIndex, '字段名')}
+                        name={[field.name, 'fieldName']}
+                        fieldKey={[field.fieldKey, 'fieldName']}
+                      >
+                        <Input
+                          allowClear
+                          placeholder="请输入字段名"
+                          onChange={e =>
+                            handleChangeFieldName(e, fieldIndex, add)
+                          }
+                        />
+                      </Form.Item>
+                    </Col>
 
-                    <Form.Item
-                      {...field}
-                      label="数据类型"
-                      name={[field.name, 'dataType']}
-                      fieldKey={[field.fieldKey, 'dataType']}
-                    >
-                      <Select style={{ width: '110px' }} mode="multiple">
-                        <Select.Option value="string">string</Select.Option>
-                        <Select.Option value="int">int</Select.Option>
-                        <Select.Option value="boolean">boolean</Select.Option>
-                        <Select.Option value="null">null</Select.Option>
-                        <Select.Option value="undefined">
-                          undefined
-                        </Select.Option>
-                      </Select>
-                    </Form.Item>
+                    <Col span={5}>
+                      <Form.Item
+                        {...field}
+                        label={dealField(fieldIndex, '数据类型')}
+                        name={[field.name, 'dataType']}
+                        fieldKey={[field.fieldKey, 'dataType']}
+                      >
+                        <Select style={{ minWidth: '110px' }} mode="multiple">
+                          <Select.Option value="string">string</Select.Option>
+                          <Select.Option value="int">int</Select.Option>
+                          <Select.Option value="boolean">boolean</Select.Option>
+                          <Select.Option value="null">null</Select.Option>
+                          <Select.Option value="undefined">
+                            undefined
+                          </Select.Option>
+                        </Select>
+                      </Form.Item>
+                    </Col>
 
-                    <Form.Item
-                      {...field}
-                      label="是否必传"
-                      name={[field.name, 'isRequired']}
-                      fieldKey={[field.fieldKey, 'isRequired']}
-                      valuePropName="checked"
-                    >
-                      <Switch />
-                    </Form.Item>
+                    <Col span={2}>
+                      <Form.Item
+                        {...field}
+                        label={dealField(fieldIndex, '是否必传')}
+                        name={[field.name, 'isRequired']}
+                        fieldKey={[field.fieldKey, 'isRequired']}
+                        valuePropName="checked"
+                      >
+                        <Switch />
+                      </Form.Item>
+                    </Col>
 
-                    <Form.Item
-                      {...field}
-                      label="字段说明"
-                      name={[field.name, 'desc']}
-                      fieldKey={[field.fieldKey, 'desc']}
-                    >
-                      <Input allowClear placeholder="请输入字段说明" />
-                    </Form.Item>
+                    <Col span={5}>
+                      <Form.Item
+                        {...field}
+                        label={dealField(fieldIndex, '字段说明')}
+                        name={[field.name, 'desc']}
+                        fieldKey={[field.fieldKey, 'desc']}
+                      >
+                        <Input allowClear placeholder="请输入字段说明" />
+                      </Form.Item>
+                    </Col>
 
-                    <Form.Item
-                      {...field}
-                      label="备注"
-                      name={[field.name, 'remark']}
-                      fieldKey={[field.fieldKey, 'remark']}
-                    >
-                      <Input
-                        allowClear
-                        placeholder="这里可以输入一些额外备注，比如字段可选值"
-                      />
-                    </Form.Item>
+                    <Col span={5}>
+                      <Form.Item
+                        {...field}
+                        label={dealField(fieldIndex, '备注')}
+                        name={[field.name, 'remark']}
+                        fieldKey={[field.fieldKey, 'remark']}
+                      >
+                        <Input
+                          allowClear
+                          placeholder="这里可以输入一些额外备注，比如字段可选值"
+                        />
+                      </Form.Item>
+                    </Col>
 
-                    {fieldIndex !== 0 && (
-                      <Button
-                        shape="circle"
-                        icon={<MinusOutlined />}
-                        onClick={() => {
-                          remove(field.name);
-                        }}
-                      />
-                    )}
-                  </Space>
+                    <Col span={2}>
+                      {fieldIndex !== 0 && (
+                        <Button
+                          shape="circle"
+                          icon={<MinusOutlined />}
+                          onClick={() => {
+                            remove(field.name);
+                          }}
+                        />
+                      )}
+                    </Col>
+                  </Row>
                 ))}
 
                 <Form.Item>
@@ -220,7 +240,7 @@ export default () => {
                     }}
                     block
                   >
-                    <PlusOutlined /> Add field
+                    <PlusOutlined /> 添加字段
                   </Button>
                 </Form.Item>
               </div>

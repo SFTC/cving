@@ -1,17 +1,17 @@
 {
   "name": "cving",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build && webpack",
     "deploy": "npm run docs:build && npm run docs:deploy",
-    "release": "npm run build && npm publish",
-    "release:nrm": "npm run build && nrm use npm && npm publish . && nrm use taobao",
+    "release": "npm run postversion && npm run build && npm run updateversion && npm publish",
     "postversion": "dumi assets",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
+    "updateversion": "git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
     "test:coverage": "umi-test --coverage"
   },
   "repository": "https://github.com/SFTC/cving",
