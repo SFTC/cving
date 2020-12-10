@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+  .code-container {
+    padding: 20px 40px 10px 20px;
+    background: #f5f5f5;
+  }
+
+  .transform {
+    position: relative;
+    width: 60px;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      color: #999;
+      content: '=>';
+    }
+  }
+}
