@@ -10,7 +10,7 @@ group:
 
 # table
 
-table 表格示例是在使用 [pro-tablem@2.8.1](https://procomponents.ant.design/components/table) 开发业务功能中沉淀的一些解决方案，可以在相同或类似的业务场景中参考示例代码快速开发。
+table 表格示例是在使用 [pro-tablem@2.13.2](https://procomponents.ant.design/components/table) 开发业务功能中沉淀的一些解决方案，可以在相同或类似的业务场景中参考示例代码快速开发。
 
 ## 最简单使用
 
