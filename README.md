@@ -16,3 +16,29 @@ $ npm run deploy
 ```
 
 ## [Todo](./TODO.md)
+
+## 目录结构
+
+```md
+cving
+├─ demos --------------------- **物料**
+│ ├─ docs
+│ │ └─ index.md
+│ └─ table
+│ └─ basic.tsx
+├─ docs ---------------------- 首页文档
+├─ src ----------------------- **组件**
+│ ├─ docs
+│ │ └─ index.md
+│ ├─ components
+│ │ └─ request
+│ └─ index.tsx -------------- 对外入口
+├─ tools --------------------- **工具**
+│ ├─ docs
+│ │ └─ index.md
+│ └─ paramsToInterface
+│ └─ index.ts
+├─ .fatherrc.ts -------------- 打包配置
+├─ webpack.config.js
+└─ package.json
+```
