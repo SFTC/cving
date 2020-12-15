@@ -4,7 +4,7 @@ order: 4
 sidebar: false
 hero:
   title: cving
-  desc: 用于提效的业务物料库
+  desc: 集成组件库、物料库、工具库于一体的业务提效平台
   actions:
     - text: 快速开始 →
       link: /components
