@@ -11,7 +11,7 @@ hero:
 features:
   - icon: https://gw.alipayobjects.com/os/q/cms/images/k9ziitmp/13668549-b393-42a2-97c3-a6365ba87ac2_w96_h96.png
     title: 内容丰富
-    desc: 可复用的业务组件 + 可直接使用代码示例 + 实用的小工具
+    desc: 可复用的业务组件 + 可直接使用的物料 + 实用的小工具
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d60657df-0822-4631-9d7c-e7a869c2f21c/k79dmz3q_w126_h126.png
     title: 提效
     desc: 结合 umi-ui，快速搭建页面
