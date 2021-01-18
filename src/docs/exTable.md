@@ -1,6 +1,6 @@
 ---
 title: 可编辑表格
-order: 2
+order: 5
 nav:
   path: /components
 group:

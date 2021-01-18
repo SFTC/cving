@@ -1,7 +1,7 @@
 ---
 title: request
 toc: menu
-order: 3
+order: 2
 nav:
   path: /components
 group:
@@ -33,10 +33,10 @@ customRequest
       id: 1,
     },
   })
-  .then(function(response) {
+  .then(function (response) {
     console.log(response);
   })
-  .catch(function(error) {
+  .catch(function (error) {
     console.log(error);
   });
 
@@ -47,10 +47,10 @@ customRequest
       name: 'Mike',
     },
   })
-  .then(function(response) {
+  .then(function (response) {
     console.log(response);
   })
-  .catch(function(error) {
+  .catch(function (error) {
     console.log(error);
   });
 ```
@@ -67,7 +67,7 @@ customRequest
 **默认可接受所有 umi-request 的 extend options 参数 [点击查看](https://github.com/umijs/umi-request/blob/master/README_zh-CN.md#request-options-参数)**
 
 | 参数              | 说明                                    | 类型      | 默认值                | 可选值   |
-| ----------------- | --------------------------------------- | --------- | --------------------- | -------- |
+| ----------------- | --------------------------------------- | --------- | --------------------- | -------- | ------------------------------------------- |
 | env               | 环境变量                                | `string`  | `'dev'`               | `string` | `'test'` \| `'dev'` \| `'mock'` \|`'build'` |
 | errno             | 业务状态码的字段名                      | `string`  | `errno` \| `err_no`   | --       |
 | errmsg            | 业务状态码描述文案的字段名              | `string`  | `errmsg` \| `err_msg` | --       |

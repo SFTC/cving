@@ -1,6 +1,6 @@
 ---
 title: 权限按钮
-order: 5
+order: 6
 nav:
   path: /components
 group:
