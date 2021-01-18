@@ -47,7 +47,7 @@ const columns: ProColumns<TableListItem>[] = [
   {
     title: '学历',
     dataIndex: 'class',
-    hideInSearch: true,
+    search: false,
   },
   {
     title: '操作',

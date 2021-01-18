@@ -10,6 +10,10 @@ export default defineConfig({
     'https://user-images.githubusercontent.com/19237129/93707435-289d0500-fb61-11ea-81a4-d2c90bd14065.png',
   exportStatic: {},
   dynamicImport: {},
+  nodeModulesTransform: {
+    type: 'none',
+    exclude: [],
+  },
   outputPath: 'docs-dist',
   mode: 'site',
   resolve: {

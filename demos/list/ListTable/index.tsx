@@ -85,31 +85,31 @@ const ListTable: React.FC<ListTableProps> = () => {
     {
       title: '公司名称',
       dataIndex: 'company_name',
-      hideInSearch: true,
+      search: false,
       width: 160,
     },
     {
       title: '起始年度',
       dataIndex: 'start_year',
-      hideInSearch: true,
+      search: false,
       width: 80,
     },
     {
       title: '起始期间（月）',
       dataIndex: 'start_month',
-      hideInSearch: true,
+      search: false,
       width: 120,
     },
     {
       title: '终止年度',
       dataIndex: 'end_year',
-      hideInSearch: true,
+      search: false,
       width: 80,
     },
     {
       title: '终止期间（月）',
       dataIndex: 'end_month',
-      hideInSearch: true,
+      search: false,
       width: 120,
     },
     {

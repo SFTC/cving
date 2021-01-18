@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { ButtonProps } from 'antd/lib/button/index';
+import { ButtonProps } from 'antd/lib/button';
 
 export declare type AuthButtonProps = {
   authNumber?: number | Array<number>;
