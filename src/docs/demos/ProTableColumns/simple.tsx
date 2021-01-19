@@ -1,28 +1,32 @@
 import React, { useRef } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
+import ProTable from '@ant-design/pro-table';
 import request from 'umi-request';
 import { ProTableColumns } from 'cving';
 
-const { getColumnSimple } = ProTableColumns;
+import type { ProColumns, ActionType } from '@ant-design/pro-table';
 
-export interface TableListItem {
+const {
+  getColumnSimple,
+  getColumnSimpleSearch,
+  getColumnMoney,
+  getColumnPercent,
+  getColumnLinkButton,
+} = ProTableColumns;
+
+export type TableListItem = {
   name: string;
   age: number;
   sex: string;
-}
+};
 
 const columns: ProColumns<TableListItem>[] = [
+  getColumnLinkButton('ID', 'id', () => {}),
   getColumnSimple('姓名', 'name'),
-  {
-    title: '年龄',
-    dataIndex: 'age',
-  },
-  {
-    title: '性别',
-    dataIndex: 'sex',
-  },
+  getColumnSimpleSearch('年龄', 'age'),
+  getColumnMoney('薪资', 'pay', undefined, 'yuan'),
+  getColumnPercent('占比', 'percent'),
 ];
 
 export default () => {
@@ -42,7 +46,7 @@ export default () => {
         request<{
           data: TableListItem[];
         }>(
-          'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/demo/table/simple',
+          'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/pro-table-columns',
           {
             params,
           },
