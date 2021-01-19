@@ -21,7 +21,7 @@ const voucherTypeMap = {
   YZ: '系统核销',
 };
 
-const TitleInfo: React.FC<TitleInfoType> = props => {
+const TitleInfo: React.FC<TitleInfoType> = (props) => {
   const { info } = props;
   const [form] = Form.useForm();
   const formItemList = [

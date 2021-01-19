@@ -16,7 +16,7 @@ const Auth = (props: AuthButtonProps) => {
   if (typeof propNumber === 'number') {
     isShow = propArray?.includes(propNumber) || false;
   } else if (Array.isArray(propNumber)) {
-    isShow = propNumber?.every(val => propArray?.includes(val)) || false;
+    isShow = propNumber?.every((val) => propArray?.includes(val)) || false;
   } else if (typeof propFun === 'function') {
     isShow = propFun();
   }

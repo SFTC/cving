@@ -30,7 +30,7 @@ export function formatStatusIValueEnum(
   },
 ): IValueEnum {
   const result = {} as any;
-  Object.keys(ivenum).forEach(k => {
+  Object.keys(ivenum).forEach((k) => {
     result[k] = {};
     result[k].text = ivenum[k];
     result[k].status = options[k];

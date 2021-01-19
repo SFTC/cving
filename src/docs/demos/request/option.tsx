@@ -12,7 +12,7 @@ export default () => {
   const handleCLick = () => {
     customRequest('/request-get', {
       params: { id: 1 },
-    }).then(res => {
+    }).then((res) => {
       setData(JSON.stringify(res));
     });
   };

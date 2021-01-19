@@ -17,7 +17,7 @@ export default () => {
         rules={[{ required: true, message: '公司名称必选' }]}
       >
         <Select placeholder="请选择公司名称">
-          {Object.keys(spLicenseMap).map(key => (
+          {Object.keys(spLicenseMap).map((key) => (
             <Option value={key} key={key}>
               {spLicenseMap[key]}
             </Option>

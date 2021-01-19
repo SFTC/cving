@@ -49,7 +49,7 @@ const taxCodeMap = {
   X2: 0.13,
 };
 
-const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
+const GLProjectInfo: React.FC<GLProjectInfoProps> = (props) => {
   // const { companyCode, dispatch } = props;
   const { companyCode } = props;
   // GL行项目表格中init数值
@@ -139,7 +139,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
       render: (text: any, record: GLTableData, index: number) => (
         <Select
           defaultValue={record.gl_subject_name ? record.gl_subject_name : ''}
-          onChange={val =>
+          onChange={(val) =>
             getSelectRecordData(
               'gl_subject_name',
               'gl_subject',
@@ -149,7 +149,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
             )
           }
         >
-          {Object.keys(commonGlSubjectMap).map(key => (
+          {Object.keys(commonGlSubjectMap).map((key) => (
             <Option value={key} key={key}>
               {commonGlSubjectMap[key]}
             </Option>
@@ -169,7 +169,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
       render: (text: any, record: GLTableData, index: number) => (
         <Input
           defaultValue={record.cost_center}
-          onChange={e => getRecordData('cost_center', index, e.target.value)}
+          onChange={(e) => getRecordData('cost_center', index, e.target.value)}
         />
       ),
     },
@@ -181,7 +181,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
         <InputNumber
           defaultValue={record.amount ? +record.amount : undefined}
           precision={2}
-          onChange={value => getRecordData('amount', index, value)}
+          onChange={(value) => getRecordData('amount', index, value)}
         />
       ),
     },
@@ -195,7 +195,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
             record.transfer_amount ? +record.transfer_amount : undefined
           }
           precision={2}
-          onChange={value => getRecordData('transfer_amount', index, value)}
+          onChange={(value) => getRecordData('transfer_amount', index, value)}
         />
       ),
     },
@@ -207,7 +207,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
         <Select
           defaultValue={record.is_div_tax ? record.is_div_tax : ''}
           style={{ width: 120 }}
-          onChange={val => getSelectData('is_div_tax', index, val)}
+          onChange={(val) => getSelectData('is_div_tax', index, val)}
         >
           <Option value="1">是</Option>
           <Option value="2">否</Option>
@@ -222,9 +222,9 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
         <Select
           style={{ width: 120 }}
           defaultValue={record.tax_code ? record.tax_code : ''}
-          onChange={val => getSelectData('tax_code', index, val)}
+          onChange={(val) => getSelectData('tax_code', index, val)}
         >
-          {Object.keys(taxCodeMap).map(val => (
+          {Object.keys(taxCodeMap).map((val) => (
             <Option value={val} key={val}>
               {val}
             </Option>
@@ -279,7 +279,8 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
     if (type === 'delete') {
       getDataSource(
         dataSource.filter(
-          res => !selectedBPItemIds.some(order => res.key === Number(order)),
+          (res) =>
+            !selectedBPItemIds.some((order) => res.key === Number(order)),
         ),
       );
       setSelectedBPItemIds([]);
@@ -294,7 +295,7 @@ const GLProjectInfo: React.FC<GLProjectInfoProps> = props => {
   }, [dataSource]);
 
   const scrollX = columns
-    .map(item => item.width)
+    .map((item) => item.width)
     .reduce((sum, ele) => Number(sum) + Number(ele));
   return (
     <Card bordered={false} title="GL行项目概况">

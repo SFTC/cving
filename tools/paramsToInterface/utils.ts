@@ -25,14 +25,14 @@ export const formToInterface = (data: FormParams) => {
     return `  /** ${desc ?? ''}${remark ? `【${remark}】` : ''} */`;
   };
 
-  const fieldStrArr = data.fields.map(field => {
+  const fieldStrArr = data.fields.map((field) => {
     return [
       toComment(field.desc, field.remark),
       `  ${field.fieldName}${field.isRequired ? '' : '?'}: ${field.dataType
-        .map(i => typeDataMap[i])
+        .map((i) => typeDataMap[i])
         .join(' | ')};`,
     ]
-      .filter(v => v)
+      .filter((v) => v)
       .join('\n');
   });
   const result = `export interface ${firstUpperCase(data.name) || 'Object'} {
@@ -49,11 +49,11 @@ const isRequiredArr = ['是', true, 'true', '1', 1, 'REQUIRED'];
 export const tableTextToFormData = (text: string) => {
   const fieldList = text.split(/\n/g);
 
-  const FormData = fieldList.map(item => {
+  const FormData = fieldList.map((item) => {
     const fieldItem = item.replace(/\s+/g, '|').split('|');
     return {
       fieldName: fieldItem[0],
-      dataType: fieldItem[1].split('、').map(i => typeDataMap[i]),
+      dataType: fieldItem[1].split('、').map((i) => typeDataMap[i]),
       isRequired: !!isRequiredArr.includes(fieldItem[2]),
       desc: fieldItem[3],
       remark: fieldItem[4],

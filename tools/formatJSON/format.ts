@@ -145,12 +145,7 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
     html += FormatLiteral('undefined', '', comma, indent, isArray, 'Null');
   } else {
     html += FormatLiteral(
-      obj
-        .toString()
-        .split('\\')
-        .join('\\\\')
-        .split('"')
-        .join('\\"'),
+      obj.toString().split('\\').join('\\\\').split('"').join('\\"'),
       '"',
       comma,
       indent,
@@ -164,11 +159,7 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
 
 function FormatLiteral(literal, quote, comma, indent, isArray, style) {
   if (typeof literal == 'string')
-    literal = literal
-      .split('<')
-      .join('&lt;')
-      .split('>')
-      .join('&gt;');
+    literal = literal.split('<').join('&lt;').split('>').join('&gt;');
 
   let str =
     "<span class='" +

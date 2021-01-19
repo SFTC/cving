@@ -29,7 +29,7 @@ const columns: ProColumns<TableListItem>[] = [
   {
     title: '姓名',
     dataIndex: 'name',
-    render: _ => <a>{_}</a>,
+    render: (_) => <a>{_}</a>,
   },
   {
     title: '年龄',

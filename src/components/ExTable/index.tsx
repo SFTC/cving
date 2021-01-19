@@ -29,7 +29,7 @@ export interface ExTableProps<T extends object = any>
 const genColumnList = <T extends object = any>(
   columns: ExColumns,
 ): ColumnsType<T> =>
-  columns.map(item => ({
+  columns.map((item) => ({
     ...item,
     render: (text: string, _: any, index: number) => {
       if (!item.editable) return text;

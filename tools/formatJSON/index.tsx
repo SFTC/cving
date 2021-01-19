@@ -30,7 +30,7 @@ export default () => {
         <Input.TextArea
           rows={30}
           value={json}
-          onChange={e => {
+          onChange={(e) => {
             setJson(e.target.value);
           }}
         />

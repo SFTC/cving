@@ -45,13 +45,13 @@ const extendedrequest = extend({
  * */
 const request = (url: string, options?: Object) =>
   extendedrequest(url, options)
-    .then(res => {
+    .then((res) => {
       const { data, response } = res;
       const { status } = response;
       if (status >= 200 && status < 300) return data;
       return errorHandler(res);
     })
-    .then(resData => {
+    .then((resData) => {
       console.log(process.env, '@@@@@@@');
       // 如果走 mock，针对性的直接返回数据即可（mock 没有 errno、 result 包裹下）
       // if (REACT_APP_ENV === 'mock') return resData;
@@ -72,7 +72,7 @@ const request = (url: string, options?: Object) =>
       }
       return Promise.reject(new Error(errmsg || error_msg));
     })
-    .catch(err => {
+    .catch((err) => {
       notification.error({
         message: '接口报错',
         description: err.message,

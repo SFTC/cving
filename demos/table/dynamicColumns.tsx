@@ -39,7 +39,7 @@ export default () => {
       data: RequestResult;
     }>(
       'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/demo/table/dynamic',
-    ).then(data => {
+    ).then((data) => {
       setColumns(data.data.columns);
     });
   }, []);
@@ -65,7 +65,7 @@ export default () => {
           },
         )
       }
-      postData={requestResult => {
+      postData={(requestResult) => {
         return ((requestResult as unknown) as RequestResult).list;
       }}
     />

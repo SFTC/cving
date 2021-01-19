@@ -34,7 +34,7 @@ export default () => {
           showSearch
           onSearch={getBankList}
         >
-          {Object.keys(bankList).map(key => (
+          {Object.keys(bankList).map((key) => (
             <Option value={bankList[key]} key={key}>
               {bankList[key]}
             </Option>

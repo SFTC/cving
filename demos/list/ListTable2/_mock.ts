@@ -50,9 +50,9 @@ function getList(req: Request, res: Response, u: string) {
   );
   const filterArray = ['current', 'pageSize', '_timestamp'];
   Object.keys(params)
-    .filter(ele => filterArray.indexOf(ele) === -1)
-    .forEach(param => {
-      dataSource = dataSource.filter(item => item[param] === params[param]);
+    .filter((ele) => filterArray.indexOf(ele) === -1)
+    .forEach((param) => {
+      dataSource = dataSource.filter((item) => item[param] === params[param]);
     });
   const title = {
     date: '凭证日期',

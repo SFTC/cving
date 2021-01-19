@@ -110,7 +110,7 @@ export default () => {
     console.log('values ---> ', values);
     // 过滤掉 fieldName 为空的字段
     const formData = deepCopy(values);
-    formData.fields = formData.fields.filter(v => v.fieldName);
+    formData.fields = formData.fields.filter((v) => v.fieldName);
 
     setInter(formToInterface(formData));
 
@@ -155,7 +155,7 @@ export default () => {
                         <Input
                           allowClear
                           placeholder="请输入字段名"
-                          onChange={e =>
+                          onChange={(e) =>
                             handleChangeFieldName(e, fieldIndex, add)
                           }
                         />
@@ -313,13 +313,13 @@ export default () => {
 
       <ImportTableText
         visible={uploadParamsModalVisible}
-        changeVisible={visible => setUploadParamsModalVisible(visible)}
-        onConfirm={text => handleConfirmUploadParams(text)}
+        changeVisible={(visible) => setUploadParamsModalVisible(visible)}
+        onConfirm={(text) => handleConfirmUploadParams(text)}
       />
 
       <HowToUseParamsTable
         visible={howToUseParamsTableModalVisible}
-        changeVisible={visible => setHowToUseParamsTableModalVisible(visible)}
+        changeVisible={(visible) => setHowToUseParamsTableModalVisible(visible)}
       />
     </div>
   );

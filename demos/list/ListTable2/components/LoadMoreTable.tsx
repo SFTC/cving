@@ -3,7 +3,7 @@ import { Table, Button } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { LoadMoreTableProps } from '../data.d';
 
-const LoadMoreTable: React.FC<LoadMoreTableProps> = props => {
+const LoadMoreTable: React.FC<LoadMoreTableProps> = (props) => {
   const { columns, query, exParams, allowParamsNull, rowKey } = props;
   const [dataSource, setDataSource] = useState<any[]>([]);
   const [total, setTotal] = useState<number>(0);
@@ -43,7 +43,7 @@ const LoadMoreTable: React.FC<LoadMoreTableProps> = props => {
   useEffect(() => {
     let flag = true;
     if (!allowParamsNull) {
-      flag = Object.keys(exParams).every(key => exParams[key]);
+      flag = Object.keys(exParams).every((key) => exParams[key]);
     }
     if (flag) {
       init();
@@ -58,7 +58,7 @@ const LoadMoreTable: React.FC<LoadMoreTableProps> = props => {
   }, [current]);
 
   const scrollX = columns
-    .map(item => item.width)
+    .map((item) => item.width)
     .reduce((sum, ele) => Number(sum) + Number(ele));
   return (
     <>

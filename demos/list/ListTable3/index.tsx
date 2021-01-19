@@ -72,16 +72,17 @@ const simulationInfoParmas = {
   ],
 };
 
-const ManualEntry: FC<ManualEntryProps> = props => {
+const ManualEntry: FC<ManualEntryProps> = (props) => {
   const {
     companyCode = '',
     BPDataSource = [],
     GLDataSource = [],
     dispatch,
   } = props;
-  const [initVoucherDataPicker, getInitVoucherDataPicker] = useState<
-    InitVoucherDataPicker
-  >({
+  const [
+    initVoucherDataPicker,
+    getInitVoucherDataPicker,
+  ] = useState<InitVoucherDataPicker>({
     start: '',
     end: '',
   });
@@ -118,7 +119,7 @@ const ManualEntry: FC<ManualEntryProps> = props => {
 
     if (tagSimulate) {
       handleTagSimulate(false);
-      getSimulate(params).then(res => {
+      getSimulate(params).then((res) => {
         if (res) {
           saveSimulateInfo(res);
           openSimulateModal(true);
@@ -152,7 +153,7 @@ const ManualEntry: FC<ManualEntryProps> = props => {
   };
 
   const handlePostOk = () => {
-    getVoucherGL(paramsPost).then(res => {
+    getVoucherGL(paramsPost).then((res) => {
       if (res) {
         handleDisabledPost(true);
         message.success('过账成功', 2, () => {
@@ -171,7 +172,7 @@ const ManualEntry: FC<ManualEntryProps> = props => {
   };
   useEffect(() => {
     // 前置获取账期时间
-    getAccountPeriod().then(res => {
+    getAccountPeriod().then((res) => {
       getInitVoucherDataPicker(res);
     });
   }, []);
