@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import styles from './index.less';
+import './index.less';
 
 import type { ButtonProps } from 'antd/lib/button/button';
 
@@ -11,7 +11,7 @@ const LinkButton = (props: LinkButtonType) => {
   const { children, ...rest } = props;
 
   return (
-    <Button type="link" className={styles.linkButton} {...rest}>
+    <Button type="link" className="cving-link-button" {...rest}>
       {children}
     </Button>
   );
