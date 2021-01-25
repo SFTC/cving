@@ -13,7 +13,7 @@ export default () => {
         params: { id: 1 },
         getResponse: true,
       },
-    ).then(res => {
+    ).then((res) => {
       setData(JSON.stringify(res));
     });
   };

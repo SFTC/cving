@@ -45,18 +45,18 @@ function getList(req: Request, res: Response, u: string) {
 
   if (params.company_code) {
     const temp = params.company_code.split(',');
-    dataSource = dataSource.filter(data =>
-      temp.some(ele => data.company_code.includes(ele)),
+    dataSource = dataSource.filter((data) =>
+      temp.some((ele) => data.company_code.includes(ele)),
     );
   }
   if (params.close_status && params.close_status.length) {
     dataSource = dataSource.filter(
-      data => data.close_status === params.close_status,
+      (data) => data.close_status === params.close_status,
     );
   }
   if (params.pre_close_status && params.pre_close_status.length) {
     dataSource = dataSource.filter(
-      data => data.pre_close_status === params.pre_close_status,
+      (data) => data.pre_close_status === params.pre_close_status,
     );
   }
 

@@ -85,31 +85,31 @@ const ListTable: React.FC<ListTableProps> = () => {
     {
       title: '公司名称',
       dataIndex: 'company_name',
-      hideInSearch: true,
+      search: false,
       width: 160,
     },
     {
       title: '起始年度',
       dataIndex: 'start_year',
-      hideInSearch: true,
+      search: false,
       width: 80,
     },
     {
       title: '起始期间（月）',
       dataIndex: 'start_month',
-      hideInSearch: true,
+      search: false,
       width: 120,
     },
     {
       title: '终止年度',
       dataIndex: 'end_year',
-      hideInSearch: true,
+      search: false,
       width: 80,
     },
     {
       title: '终止期间（月）',
       dataIndex: 'end_month',
-      hideInSearch: true,
+      search: false,
       width: 120,
     },
     {
@@ -150,13 +150,13 @@ const ListTable: React.FC<ListTableProps> = () => {
     const { company_code } = params;
     // 匹配多个特殊字符（用来作为分隔符）
     const temp = (company_code && company_code.split(/，|,|、|\.|\s+/)) || [];
-    const filterParam = temp.filter(ele => ele.length).join(',');
+    const filterParam = temp.filter((ele) => ele.length).join(',');
     if (filterParam.length) {
       const result = await queryList({ ...params, company_code: filterParam });
       handleAccountPeriod(result.account_period || '-');
       return result;
     }
-    return new Promise(resolve => resolve([]));
+    return new Promise((resolve) => resolve([]));
   };
   // 导出列表数据
   const handleExport = () => {
@@ -173,7 +173,7 @@ const ListTable: React.FC<ListTableProps> = () => {
       message.warning('请输入公司代码');
     } else {
       const filterParams = {};
-      Object.keys(formParam).forEach(key => {
+      Object.keys(formParam).forEach((key) => {
         if (formParam[key]) {
           filterParams[key] = formParam[key];
         }
@@ -187,10 +187,10 @@ const ListTable: React.FC<ListTableProps> = () => {
     selectedBills: Array<ListTableItem>,
   ) => {
     // 选中 row 中具有【关账状态 - 已关账】
-    const hasClosed = selectedBills.some(item => +item.close_status === 2);
+    const hasClosed = selectedBills.some((item) => +item.close_status === 2);
     if (hasClosed || !selectedBills.length) return true;
     const flag = selectedBills.every(
-      item => +item.pre_close_status === +operate2Status[source],
+      (item) => +item.pre_close_status === +operate2Status[source],
     );
     return !flag;
   };
@@ -219,7 +219,7 @@ const ListTable: React.FC<ListTableProps> = () => {
         rowKey="id"
         toolBarRender={(action, { selectedRows }) => [
           <div>
-            {Object.keys(operate2Status).map(ele => (
+            {Object.keys(operate2Status).map((ele) => (
               <div key={ele} style={{ display: 'inline-block' }}>
                 <Popconfirm
                   title={`确认进行[${ele}]操作吗?`}
@@ -245,7 +245,7 @@ const ListTable: React.FC<ListTableProps> = () => {
             项&nbsp;&nbsp;
           </div>
         )}
-        request={params => handleQuery(params)}
+        request={(params) => handleQuery(params)}
         columns={columns}
         rowSelection={{}}
         search={{
@@ -289,7 +289,7 @@ const ListTable: React.FC<ListTableProps> = () => {
         rowKey="op_time"
         onCancel={() => handleDialogVisible(false)}
         modalVisible={logDialog}
-        getOperateLog={params =>
+        getOperateLog={(params) =>
           getLog({
             ...params,
             company_code: logParam[0],

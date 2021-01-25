@@ -24,7 +24,7 @@ export default () => {
             return option.children.indexOf(input) >= 0;
           }}
         >
-          {Object.keys(spLicenseMap).map(key => (
+          {Object.keys(spLicenseMap).map((key) => (
             <Option value={key} key={key}>
               {spLicenseMap[key]}
             </Option>

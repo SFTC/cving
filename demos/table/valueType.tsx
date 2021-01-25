@@ -130,7 +130,7 @@ export default () => {
         collapsed: false,
         collapseRender: () => null,
       }}
-      request={async params =>
+      request={async (params) =>
         request<{
           data: TableListItem[];
         }>(
@@ -140,7 +140,7 @@ export default () => {
           },
         )
       }
-      beforeSearchSubmit={params => {
+      beforeSearchSubmit={(params) => {
         // 这里处理数据
         const processParams = {
           ...params,

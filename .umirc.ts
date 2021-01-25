@@ -10,6 +10,10 @@ export default defineConfig({
     'https://user-images.githubusercontent.com/19237129/93707435-289d0500-fb61-11ea-81a4-d2c90bd14065.png',
   exportStatic: {},
   dynamicImport: {},
+  nodeModulesTransform: {
+    type: 'none',
+    exclude: [],
+  },
   outputPath: 'docs-dist',
   mode: 'site',
   resolve: {
@@ -21,8 +25,16 @@ export default defineConfig({
   navs: [
     null, // null 值代表保留约定式生成的导航，只做增量配置
     {
+      title: '函数库',
+      path: 'https://github.com/SFTC/better-js-lib',
+    },
+    {
       title: 'GitHub',
       path: 'https://github.com/SFTC/cving',
+    },
+    {
+      title: '更新日志',
+      path: 'https://github.com/SFTC/cving/releases',
     },
   ],
   locale: {

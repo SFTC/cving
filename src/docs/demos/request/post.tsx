@@ -15,7 +15,7 @@ export default () => {
           id: 1,
         },
       },
-    ).then(res => {
+    ).then((res) => {
       setData(JSON.stringify(res));
     });
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { ButtonProps } from 'antd/lib/button/index';
+import { ButtonProps } from 'antd/lib/button';
 
 export declare type AuthButtonProps = {
   authNumber?: number | Array<number>;
@@ -16,7 +16,7 @@ const Auth = (props: AuthButtonProps) => {
   if (typeof propNumber === 'number') {
     isShow = propArray?.includes(propNumber) || false;
   } else if (Array.isArray(propNumber)) {
-    isShow = propNumber?.every(val => propArray?.includes(val)) || false;
+    isShow = propNumber?.every((val) => propArray?.includes(val)) || false;
   } else if (typeof propFun === 'function') {
     isShow = propFun();
   }

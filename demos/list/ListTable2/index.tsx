@@ -22,7 +22,7 @@ const ListTable: React.FC<ListTableProps> = () => {
   const [glParams, setGlParams] = useState({ type: 'GL', voucher_no: '' });
   const [info, setInfo] = useState({});
   const search = () => {
-    searchForm.validateFields().then(values => {
+    searchForm.validateFields().then((values) => {
       setBpParams({ ...bpParams, ...values });
       setGlParams({ ...glParams, ...values });
       queryList({
@@ -30,7 +30,7 @@ const ListTable: React.FC<ListTableProps> = () => {
         type: 'BP',
         current: 1,
         pageSize: 20,
-      }).then(res => {
+      }).then((res) => {
         if (res) {
           setInfo(res.title);
         }

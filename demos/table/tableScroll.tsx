@@ -44,14 +44,17 @@ const columns: ProColumns<TableListItem>[] = [
   {
     title: '占位1',
     dataIndex: 'value1',
+    width: 200,
   },
   {
     title: '占位2',
     dataIndex: 'value2',
+    width: 200,
   },
   {
     title: '占位3',
     dataIndex: 'value3',
+    width: 200,
   },
   {
     title: '占位4',
@@ -63,10 +66,12 @@ const columns: ProColumns<TableListItem>[] = [
   {
     title: '占位5',
     dataIndex: 'value5',
+    width: 200,
   },
   {
     title: '占位6',
     dataIndex: 'value6',
+    width: 200,
   },
 ];
 

@@ -73,9 +73,6 @@ export default () => {
             <Radio.Button value={12}>12</Radio.Button>
             <Radio.Button value={24}>24</Radio.Button>
           </Radio.Group>
-          <span style={{ fontSize: '12px', marginLeft: '5px' }}>
-            注：修改 span 值后需要展开&#47;收起筛选项才能生效
-          </span>
         </div>
       </Space>
       <ProTable<TableListItem>

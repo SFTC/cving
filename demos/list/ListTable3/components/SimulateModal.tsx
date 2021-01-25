@@ -140,7 +140,7 @@ interface SimulateModalProps {
   };
 }
 
-const SimulateModal: React.FC<SimulateModalProps> = props => {
+const SimulateModal: React.FC<SimulateModalProps> = (props) => {
   const { visibleSimulateModal, onCancel, simulateInfo } = props;
   const { title, bp_data, gl_data } = simulateInfo;
   const titleInfo = () => (
@@ -186,7 +186,7 @@ const SimulateModal: React.FC<SimulateModalProps> = props => {
     </>
   );
 
-  const bpScrollX = BPColumns.map(item => item.width).reduce(
+  const bpScrollX = BPColumns.map((item) => item.width).reduce(
     (sum, ele) => Number(sum) + Number(ele),
   );
   const BPInfo = () => (
@@ -204,7 +204,7 @@ const SimulateModal: React.FC<SimulateModalProps> = props => {
     </>
   );
 
-  const glScrollX = GLColumns.map(item => item.width).reduce(
+  const glScrollX = GLColumns.map((item) => item.width).reduce(
     (sum, ele) => Number(sum) + Number(ele),
   );
   const GLInfo = () => (

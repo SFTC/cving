@@ -1,6 +1,6 @@
 ---
 title: 权限按钮
-order: 5
+order: 6
 nav:
   path: /components
 group:
@@ -10,6 +10,8 @@ group:
 ## 权限组件
 
 权限组件主要是 Ant Design Button 的拓展,支持 Button 所有属性，另外支持通过权限来控制按钮的显隐
+
+_[@umijs/plugin-access](https://umijs.org/zh-CN/plugins/plugin-access#access-1)也提供了 React hook `useAccess` 以及组件 `<Access />` 对应用进行权限控制_
 
 ## 基本使用
 

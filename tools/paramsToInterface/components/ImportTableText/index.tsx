@@ -42,7 +42,7 @@ export default (props: IPorps) => {
             placeholder="请输入表格文本"
             value={value}
             rows={30}
-            onChange={e => setValue(e.currentTarget.value)}
+            onChange={(e) => setValue(e.currentTarget.value)}
           />
         </div>
         <Card title="使用说明">

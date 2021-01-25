@@ -22,10 +22,10 @@ export default () => {
   return (
     <Form form={form}>
       <Form.List name="company_list">
-        {fields => {
+        {(fields) => {
           return (
             <>
-              {fields.map(field => (
+              {fields.map((field) => (
                 <Form.Item key={field.fieldKey} shouldUpdate>
                   {() => {
                     return (
@@ -38,12 +38,12 @@ export default () => {
                       >
                         <Select placeholder="请选择公司名称">
                           {Object.keys(spLicenseMap)
-                            .filter(item => {
+                            .filter((item) => {
                               const licenseList = (form.getFieldValue(
                                 'company_list',
                               ) as {
                                 license: string;
-                              }[]).map(company => company.license);
+                              }[]).map((company) => company.license);
                               const licIndex = licenseList.indexOf(item);
                               return (
                                 licIndex === -1 ||
@@ -55,7 +55,7 @@ export default () => {
                                   ])
                               );
                             })
-                            .map(key => (
+                            .map((key) => (
                               <Option value={key} key={key}>
                                 {spLicenseMap[key]}
                               </Option>

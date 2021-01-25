@@ -98,7 +98,7 @@ export default () => {
           <CloudDownloadOutlined /> 导出
         </Button>,
       ]}
-      request={async params =>
+      request={async (params) =>
         request<{
           data: TableListItem[];
         }>(

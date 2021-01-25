@@ -46,7 +46,7 @@ const clientGlSubjectMap = {
   22410502: '其他应付款_ARMS_COD',
 };
 
-const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
+const BPProjectInfo: React.FC<BPProjectInfoProps> = (props) => {
   // const { companyCode, dispatch } = props;
   const { companyCode } = props;
   // BP行项目表格中init数值
@@ -90,7 +90,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
     const params = {
       settlement_code,
     };
-    getIsMonthCustomer(params).then(res => {
+    getIsMonthCustomer(params).then((res) => {
       if (Number(res.message) === 1) {
         handleIsMonthCustomer(true);
       } else {
@@ -177,7 +177,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
       render: (text: any, record: BPTableData, index: number) => (
         <Input
           defaultValue={record.settlement_code}
-          onChange={e =>
+          onChange={(e) =>
             getRecordData('settlement_code', index, e.target.value)
           }
         />
@@ -194,7 +194,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
               ? record.settle_protocol_type_name
               : ''
           }
-          onChange={val =>
+          onChange={(val) =>
             getSelectRecordData(
               'settle_protocol_type_name',
               'settle_protocol_type',
@@ -205,7 +205,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
           }
         >
           {Object.keys(settlementProtocolMap) &&
-            Object.keys(settlementProtocolMap).map(key => (
+            Object.keys(settlementProtocolMap).map((key) => (
               <Option value={key} key={key}>
                 {settlementProtocolMap[key]}
               </Option>
@@ -225,7 +225,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
       render: (text: any, record: BPTableData, index: number) => (
         <Select
           defaultValue={record.gl_subject_name ? record.gl_subject_name : ''}
-          onChange={val =>
+          onChange={(val) =>
             getSelectRecordData(
               'gl_subject_name',
               'gl_subject',
@@ -236,7 +236,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
           }
         >
           {Object.keys(clientGlSubjectMap) &&
-            Object.keys(clientGlSubjectMap).map(key => (
+            Object.keys(clientGlSubjectMap).map((key) => (
               <Option value={key} key={key}>
                 {clientGlSubjectMap[key]}
               </Option>
@@ -257,7 +257,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
         <InputNumber
           defaultValue={record.amount ? +record.amount : undefined}
           precision={2}
-          onChange={value => getRecordData('amount', index, value)}
+          onChange={(value) => getRecordData('amount', index, value)}
         />
       ),
     },
@@ -268,7 +268,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
       render: (text: any, record: BPTableData, index: number) => (
         <Input
           defaultValue={record.cost_center}
-          onChange={e => getRecordData('cost_center', index, e.target.value)}
+          onChange={(e) => getRecordData('cost_center', index, e.target.value)}
         />
       ),
     },
@@ -286,7 +286,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
               : undefined
           }
           format="YYYY-MM"
-          onChange={d => handleDatePicker('bill_period', index, d)}
+          onChange={(d) => handleDatePicker('bill_period', index, d)}
         />
       ),
     },
@@ -297,7 +297,9 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
       render: (text: any, record: BPTableData, index: number) => (
         <Input
           defaultValue={record.customer_code}
-          onChange={e => getRecordData('customer_code', index, e.target.value)}
+          onChange={(e) =>
+            getRecordData('customer_code', index, e.target.value)
+          }
         />
       ),
     },
@@ -308,7 +310,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
       render: (text: any, record: BPTableData, index: number) => (
         <Input
           defaultValue={record.customer_express_branch}
-          onChange={e =>
+          onChange={(e) =>
             getRecordData('customer_express_branch', index, e.target.value)
           }
         />
@@ -328,7 +330,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
           }
           disabled={!monthCustomer}
           format="YYYY-MM-DD"
-          onChange={d => handleDatePicker('bill_end_date', index, d)}
+          onChange={(d) => handleDatePicker('bill_end_date', index, d)}
         />
       ),
     },
@@ -340,7 +342,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
         <Input
           disabled={!monthCustomer}
           defaultValue={record.payment_term}
-          onChange={e => getRecordData('payment_term', index, e.target.value)}
+          onChange={(e) => getRecordData('payment_term', index, e.target.value)}
         />
       ),
     },
@@ -388,7 +390,8 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
     if (type === 'delete') {
       getDataSource(
         dataSource.filter(
-          res => !selectedBPItemIds.some(order => res.key === Number(order)),
+          (res) =>
+            !selectedBPItemIds.some((order) => res.key === Number(order)),
         ),
       );
       setSelectedBPItemIds([]);
@@ -403,7 +406,7 @@ const BPProjectInfo: React.FC<BPProjectInfoProps> = props => {
   }, [dataSource]);
 
   const scrollX = columns
-    .map(item => item.width)
+    .map((item) => item.width)
     .reduce((sum, ele) => Number(sum) + Number(ele));
   return (
     <Card bordered={false} title="BP行项目概况">

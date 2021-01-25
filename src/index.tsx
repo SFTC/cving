@@ -1,8 +1,8 @@
-import {
+import type {
   ExColumns,
   ExColumnType,
   ExColumnGroupType,
-  ExTableProps
+  ExTableProps,
 } from './components/ExTable';
 
 export { default as AuthButton } from './components/AuthButton';
@@ -11,10 +11,6 @@ export { default as TableColumnOperateBtnList } from './components/TableColumnOp
 export { default as TableSearchRequired } from './components/TableSearchRequired';
 export { default as ExTable } from './components/ExTable';
 export { default as FormSpan } from './components/FormSpan';
+export * as ProTableColumns from './components/ProTableColumns';
 
-export type {
-  ExColumns,
-  ExColumnType,
-  ExColumnGroupType,
-  ExTableProps,
-}
+export type { ExColumns, ExColumnType, ExColumnGroupType, ExTableProps };

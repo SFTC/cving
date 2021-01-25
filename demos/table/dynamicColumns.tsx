@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 import request from 'umi-request';
+import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 
 export interface TableListItem {
   name: string;
@@ -32,7 +32,17 @@ export interface RequestResult {
 
 export default () => {
   const actionRef = useRef<ActionType>();
-  const [columns, setColumns] = useState<ProColumns<TableListItem>[]>([]);
+  const [columns, setColumns] = useState<ProColumns<TableListItem>[]>();
+
+  useEffect(() => {
+    request<{
+      data: RequestResult;
+    }>(
+      'https://www.fastmock.site/mock/996fa2d079bace69b60dc991084c9c04/cving/demo/table/dynamic',
+    ).then((data) => {
+      setColumns(data.data.columns);
+    });
+  }, []);
 
   return (
     <ProTable<TableListItem>
@@ -44,6 +54,7 @@ export default () => {
           <PlusOutlined /> 新建
         </Button>,
       ]}
+      columns={columns}
       request={async (params = {}) =>
         request<{
           data: TableListItem[];
@@ -54,13 +65,9 @@ export default () => {
           },
         )
       }
-      postData={requestResult => {
-        // @ts-ignore
-        setColumns((requestResult as RequestResult).columns);
-        // @ts-ignore
-        return (requestResult as RequestResult).list;
+      postData={(requestResult) => {
+        return ((requestResult as unknown) as RequestResult).list;
       }}
-      columns={columns}
     />
   );
 };

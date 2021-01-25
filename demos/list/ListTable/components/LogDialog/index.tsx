@@ -15,7 +15,7 @@ interface LogDialogProps {
   dataOpType?: IValueEnum;
 }
 
-const LogDialog: React.FC<LogDialogProps> = props => {
+const LogDialog: React.FC<LogDialogProps> = (props) => {
   const actionRef = useRef<ActionType>();
   const {
     rowKey = 'id',
@@ -51,7 +51,7 @@ const LogDialog: React.FC<LogDialogProps> = props => {
     {
       title: '操作时间',
       dataIndex: 'op_time',
-      render: text =>
+      render: (text) =>
         text
           ? moment((text as number) * 1000).format('YYYY-MM-DD HH:mm:ss')
           : '',
@@ -84,7 +84,7 @@ const LogDialog: React.FC<LogDialogProps> = props => {
           return className;
         }}
         className={style.logdialogtable}
-        request={params => getOperateLog(params as Partial<TableListParams>)}
+        request={(params) => getOperateLog(params as Partial<TableListParams>)}
         columns={columns}
         search={false}
         options={false}

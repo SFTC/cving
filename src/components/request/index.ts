@@ -97,11 +97,11 @@ const packRequest = (extendOption?: Partial<ExtendOption>) => {
     if (req.options.getResponse) return;
 
     /** 业务状态码 */
-    const errno = +[res[options.errno], res.error_no].find(v => !isEmpty(v));
+    const errno = +[res[options.errno], res.error_no].find((v) => !isEmpty(v));
 
     /** 业务错误状态信息 */
     const errmsg =
-      [res[options.errmsg], res.err_msg].find(v => !isEmpty(v)) || '';
+      [res[options.errmsg], res.err_msg].find((v) => !isEmpty(v)) || '';
 
     switch (errno) {
       /** 业务状态成功 */

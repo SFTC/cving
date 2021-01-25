@@ -31,7 +31,7 @@ const currencyMap = {
   VND: '越南盾',
 };
 
-const TitleInfo: React.FC<TitleInfoProps> = props => {
+const TitleInfo: React.FC<TitleInfoProps> = (props) => {
   // const { disabledDate, dispatch } = props;
   const { disabledDate } = props;
 
@@ -71,7 +71,7 @@ const TitleInfo: React.FC<TitleInfoProps> = props => {
           <FormItem label="凭证类型" name={['title', 'type']}>
             <Select defaultValue="YM" disabled>
               {Object.keys(voucherTypeMap) &&
-                Object.keys(voucherTypeMap).map(key => (
+                Object.keys(voucherTypeMap).map((key) => (
                   <Option value={key} key={key}>
                     {voucherTypeMap[key]}
                   </Option>
@@ -85,7 +85,7 @@ const TitleInfo: React.FC<TitleInfoProps> = props => {
           <FormItem label="交易货币" name={['title', 'currency']}>
             <Select defaultValue="CNY" disabled>
               {Object.keys(currencyMap) &&
-                Object.keys(currencyMap).map(key => (
+                Object.keys(currencyMap).map((key) => (
                   <Option value={key} key={key}>
                     {key}
                   </Option>
