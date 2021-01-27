@@ -1,7 +1,8 @@
 import React from 'react';
 import { NP } from 'better-js-lib';
-import LinkButton, { LinkButtonType } from './LinkButton/index';
+import LinkButton from './LinkButton/index';
 
+import type { LinkButtonType } from './LinkButton/index';
 import type { ProColumns } from '@ant-design/pro-table';
 
 /**

@@ -1,6 +1,8 @@
-import { extend, ExtendOptionsInit } from 'umi-request';
+import { extend } from 'umi-request';
 import { notification } from 'antd';
-import { isEmpty } from 'better-js-lib';
+import { is } from 'better-js-lib';
+
+import type { ExtendOptionsInit } from 'umi-request';
 
 /** 调用错误提示框 */
 const remindError = (errorDesc: string, errorMsg: string = '接口报错') =>
@@ -97,11 +99,13 @@ const packRequest = (extendOption?: Partial<ExtendOption>) => {
     if (req.options.getResponse) return;
 
     /** 业务状态码 */
-    const errno = +[res[options.errno], res.error_no].find((v) => !isEmpty(v));
+    const errno = +[res[options.errno], res.error_no].find(
+      (v) => !is.empty2(v),
+    );
 
     /** 业务错误状态信息 */
     const errmsg =
-      [res[options.errmsg], res.err_msg].find((v) => !isEmpty(v)) || '';
+      [res[options.errmsg], res.err_msg].find((v) => !is.empty2(v)) || '';
 
     switch (errno) {
       /** 业务状态成功 */
